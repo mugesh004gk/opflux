@@ -440,3 +440,5 @@ const translations = {
 };
 
 window.i18nTranslations = translations;
+
+window.i18nTranslations = translations;

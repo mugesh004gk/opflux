@@ -319,3 +319,5 @@ if (contactForm) {
             });
     });
 }
+
+window.setLanguage = setLanguage;
