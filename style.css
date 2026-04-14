@@ -2461,3 +2461,8 @@ img {
     /* Prevent repaints */
     backface-visibility: hidden;
 }
+
+@media (max-width: 768px) { :root { --section-padding: 40px 5%; } .glass-card { padding: 1.5rem !important; } .nav-actions .lang-switch { display: none !important; } .mobile-menu-toggle { display: inline-flex !important; } h2 { font-size: 2rem !important; } h3 { font-size: 1.5rem !important; } p { font-size: 1rem !important; } }
+@media (max-width: 768px) { html, body { overflow-x: hidden; width: 100vw; } .container { padding: 0 1rem !important; } h2 { font-size: 2rem !important; } h3 { font-size: 1.5rem !important; } p { font-size: 1rem !important; } .glass-card { padding: 1.2rem !important; } .section-head { margin-bottom: 2rem !important; } .mobile-menu-toggle { display: inline-flex !important; } .nav-actions { display: flex !important; } .lang-switch { display: none !important; } .hero-split { padding-top: 100px !important; } .grid-2, .grid-3, .grid-4 { gap: 1.5rem !important; } .img-box.media-frame, .about-sticky-media, .consulting-visual { min-height: 250px !important; height: 250px !important; } }
+
+.mobile-only { display: none !important; } @media(max-width: 768px){ .mobile-only { display: flex !important; } }
