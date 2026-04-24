@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 .mobile-only { display: none !important; } 
 @media (max-width: 768px) { .mobile-only { display: flex !important; } }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   /* === PREMIUM LIGHT THEME COLOR SYSTEM === */
@@ -2947,9 +2947,8 @@ html, body, #app {
    Force readability over dark-mode inline styles
    ========================================= */
 
-/* All headings in sections must be dark readable blue */
+/* All headings in sections must be dark readable blue EXCEPT h2 */
 section:not(.hero):not(.strategy-section):not(.impact-section) h1,
-section:not(.hero):not(.strategy-section):not(.impact-section) h2,
 section:not(.hero):not(.strategy-section):not(.impact-section) h3,
 section:not(.hero):not(.strategy-section):not(.impact-section) h4 {
   color: var(--text-primary) !important;
@@ -2959,6 +2958,7 @@ section:not(.hero):not(.strategy-section):not(.impact-section) h4 {
 
 /* Specific exception for h2 and metrics to keep their beautiful specific gradients */
 section:not(.hero) h2,
+section:not(.hero) h2[style],
 .metrics-number {
   color: var(--accent-teal) !important;
     background: none !important;
@@ -3464,11 +3464,221 @@ section:not(.hero) .glass-card {
 .services-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.94));
+  background: linear-gradient(to bottom, rgba(3, 7, 18, 0.9) 0%, rgba(3, 7, 18, 0.8) 100%);
   z-index: 1;
 }
 
 /* Fix header text for these sections */
-.about-section-premium h2, .services-section-grid h2 {
+.about-section-premium h2, 
+.services-section-grid h2 {
+  color: #ffffff !important;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.about-section-premium p,
+.services-section-grid p,
+.about-section-premium span,
+.services-section-grid span {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.services-section-grid .teal {
   color: var(--accent-teal) !important;
+}
+
+/* Force light text in dark premium sections, overriding global light mode variables */
+.services-section-grid h3,
+.services-section-grid span,
+.about-section-premium h3,
+.about-section-premium span {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+}
+.services-section-grid p,
+.about-section-premium p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+}
+.services-section-grid .teal,
+.about-section-premium .teal {
+  color: var(--accent-teal) !important;
+  -webkit-text-fill-color: var(--accent-teal) !important;
+}
+/* Service Gallery Responsive */
+.service-gallery-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 600px;
+  width: 100%;
+  margin: 0 auto;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.service-gallery-inactive-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+@media (max-width: 900px) {
+  .service-gallery-container {
+    flex-direction: column;
+    height: 800px;
+  }
+  .service-gallery-inactive-text {
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+  }
+}
+
+/* === EXPERTISE & CONTACT PREMIUM OVERRIDES === */
+
+.expertise-card-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-teal) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.contact-section-premium {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-glass-container {
+  background: rgba(11, 31, 51, 0.8) !important;
+  backdrop-filter: blur(30px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6) !important;
+}
+
+/* Ensure text visibility in the new expertise section which uses dark backgrounds */
+.expertise-section-dark * {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.expertise-section-dark .teal, 
+.expertise-section-dark .teal * {
+  color: var(--accent-teal) !important;
+  -webkit-text-fill-color: var(--accent-teal) !important;
+}
+
+.expertise-section-dark p {
+  color: rgba(255, 255, 255, 0.7) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Contact Section Text Fixes */
+.contact-section-premium h2 {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+
+.contact-section-premium p {
+  color: rgba(255, 255, 255, 0.7) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.contact-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.traditional-form-premium .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.traditional-form-premium label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.traditional-form-premium input,
+.traditional-form-premium textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #F8FAFC;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.traditional-form-premium input:focus,
+.traditional-form-premium textarea:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+  background: #fff;
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.08);
+}
+
+.contact-info-stack {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-card-premium {
+  background: #F8FAFC;
+  padding: 1.5rem 2.5rem;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-card-premium:hover {
+  background: #FFFFFF;
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: var(--accent-teal);
+}
+
+.info-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(20, 184, 166, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-teal);
+  border: 1px solid rgba(20, 184, 166, 0.1);
+}
+
+.info-card-premium h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.info-card-premium p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 }

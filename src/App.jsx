@@ -45,7 +45,7 @@ const SEO = ({ title, description }) => {
 };
 
 // Lazy load sections for performance
-const Sections = React.lazy(() => import('./components/Sections'));
+
 const Hero = React.lazy(() => import('./components/Sections').then(module => ({ default: module.Hero })));
 const WhatMakesOpflux = React.lazy(() => import('./components/Sections').then(module => ({ default: module.WhatMakesOpflux })));
 const WhyOpflux = React.lazy(() => import('./components/Sections').then(module => ({ default: module.WhyOpflux })));
@@ -109,8 +109,8 @@ const Layout = ({ children }) => {
 const Home = () => (
   <>
     <SEO 
-      title="OpFlux Solution | Operating The Intelligent Future" 
-      description="OpFlux Solution delivers engineering-driven operations, robotic kiosk management, supply chain precision, and scalable business intelligence solutions." 
+      title="OpFlux Solution | Automated Retail Operations & Supply Chain Experts" 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <Hero />
     <WhatMakesOpflux />
@@ -126,8 +126,8 @@ const Home = () => (
 const AboutPage = () => (
   <>
     <SEO 
-      title="About OpFlux Solution | Operational Excellence" 
-      description="Learn about OpFlux Solution's mission to drive operational excellence in automated retail and logistics." 
+      title="About OpFlux Solution | Operations Intelligence for Automated Retail" 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <AboutSection />
   </>
@@ -137,7 +137,7 @@ const ServicesPage = () => (
   <>
     <SEO 
       title="Services | OpFlux Solution" 
-      description="Discover our range of services including robotic kiosk operations, supply chain management, and operational analytics." 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <WhatWeDo />
   </>
@@ -146,8 +146,8 @@ const ServicesPage = () => (
 const OperationsPage = () => (
   <>
     <SEO 
-      title="Operations | OpFlux Solution" 
-      description="Explore our robust operational frameworks, zero-latency response protocols, and engineering standards." 
+      title="Operations Management | OpFlux Solution" 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <HowOpflux />
     <OperationalPhilosophy />
@@ -159,7 +159,7 @@ const CaseStudyPage = () => (
   <>
     <SEO 
       title="Case Studies | OpFlux Solution" 
-      description="Read how OpFlux Solution transforms businesses with structural yield optimization and integrated business intelligence." 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <SuccessStory />
     <Logistics />
@@ -169,8 +169,8 @@ const CaseStudyPage = () => (
 const ContactPage = () => (
   <>
     <SEO 
-      title="Contact Us | OpFlux Solution" 
-      description="Get in touch with OpFlux Solution to discuss how we can elevate your automated retail operations." 
+      title="Contact OpFlux Solution" 
+      description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 
     />
     <ContactSection />
   </>

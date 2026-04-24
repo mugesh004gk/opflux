@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from './LanguageContext';
 import { 
   Zap, Ruler, Timer, Settings, Package, TrendingUp, 
   BarChart3, PlugZap, Wrench, Link2, Target, 
-  AlertTriangle, RefreshCw, Mail, Box, Truck, CheckCircle2 
+  AlertTriangle, RefreshCw, Mail, Box, Truck, CheckCircle2,
+  ShieldCheck, Globe, Cpu, Activity, Info, Rocket, 
+  Database, Server, Network, Terminal, LayoutGrid, Layers, Hexagon,
+  Users, MessageSquare, Calendar, ArrowRight, MousePointer2, Coffee, Phone
 } from 'lucide-react';
 
 export const Hero = () => {
@@ -53,7 +56,7 @@ export const Hero = () => {
           <div className="animated-machine">
             <div className="vertical-scanner-line"></div>
             <div className="machine-mask">
-              <img src="/machine-core.webp" alt="OpFlux robotic kiosk operations system" className="machine-img" width="1000" height="1200" />
+              <img loading="lazy" src="/machine-core.webp" alt="OpFlux automated retail operations and robotic kiosque management system" className="machine-img" width="1000" height="1200" />
             </div>
             <div className="floating-hero-card fhc-right">
               <h4 className="fhc-value">100%</h4>
@@ -132,20 +135,56 @@ export const WhyOpflux = () => {
             <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', textAlign: 'left' }}>{t('why.subtitle')}</p>
           </div>
         </div>
-        <div className="grid-2 reveal" style={{ alignItems: 'center', gap: '4rem', marginBottom: '5rem' }}>
-          <div className="why-text">
-            <h4 className="teal" style={{ marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '1.1rem' }}>{t('why.hBridge')}</h4>
-            <p style={{ fontSize: '1.3rem', lineHeight: 1.6, color: '#fff', marginBottom: '2rem' }}>{t('why.bridgeDesc')}</p>
-            <div style={{ padding: '2rem', background: 'rgba(46,196,182,0.05)', borderLeft: '4px solid var(--accent-teal)', borderRadius: '0 20px 20px 0' }}>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', margin: 0, fontStyle: 'italic' }}>{t('why.bridgeDesc2')}</p>
+        <div className="grid-2 reveal" style={{ alignItems: 'center', gap: '5rem', marginBottom: '6rem' }}>
+          <div className="why-text-premium" style={{ position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '50px', marginBottom: '1.5rem', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+              <span className="badge-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)', display: 'block' }}></span>
+              <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 700 }}>{t('why.hBridge')}</span>
+            </div>
+            
+            <h3 style={{ fontSize: 'clamp(2.2rem, 4vw, 3rem)', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+              We Bridge the Gap Between <span style={{ color: 'var(--accent-teal)' }}>Vision</span> & Reality
+            </h3>
+            
+            <p style={{ fontSize: '1.25rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>
+              {t('why.bridgeDesc')}
+            </p>
+            
+            <div className="premium-quote-card" style={{ padding: '2.5rem', background: 'var(--bg-tertiary)', borderLeft: '4px solid var(--accent-teal)', borderRadius: '0 24px 24px 24px', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', animation: 'float 8s ease-in-out infinite alternate' }}>
+              <div style={{ position: 'absolute', top: '-18px', left: '20px', background: 'var(--accent-teal)', color: '#fff', padding: '0.6rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 5px 15px rgba(20,184,166,0.3)' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25-.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+              </div>
+              <p style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: 0, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.6 }}>
+                "{t('why.bridgeDesc2')}"
+              </p>
             </div>
           </div>
-          <div className="img-box reveal media-frame" style={{ width: '100%', height: 'auto', minHeight: '350px', position: 'relative', border: '1px solid rgba(46,196,182,0.1)' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(11,31,51,0.5), transparent)', zIndex: 2 }}></div>
-            <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop&fm=webp" alt="High-tech circuit and automated systems monitoring dashboard" width="1200" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6) contrast(1.2) saturate(0.8)' }} />
-            <div style={{ position: 'absolute', bottom: '20px', right: '20px', padding: '1.5rem', background: 'rgba(5,15,30,0.95)', backdropFilter: 'blur(10px)', border: '2px solid rgba(46,196,182,0.3)', borderRadius: '12px', zIndex: 5, boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--accent-teal)', marginBottom: '0.5rem', letterSpacing: '2px', fontWeight: 700 }}>VIRTUALIZED OPS</div>
-              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>99.8% UPTIME</div>
+
+          <div className="why-visual-premium" style={{ position: 'relative', perspective: '1000px' }}>
+            <div className="image-stack" style={{ position: 'relative', height: '550px', width: '100%', transformStyle: 'preserve-3d' }}>
+              {/* Decorative Background Blob */}
+              <div style={{ position: 'absolute', top: '10%', right: '0%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(20,184,166,0.2) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(40px)', zIndex: 0, animation: 'float 10s infinite alternate' }}></div>
+              
+              {/* Main Image */}
+              <div style={{ position: 'absolute', top: 0, right: 0, width: '85%', height: '85%', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.15)', zIndex: 1, border: '1px solid rgba(0,0,0,0.05)', animation: 'float 7s ease-in-out infinite' }}>
+                <img loading="lazy" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80&fm=webp" alt="Automated precision robotics" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              
+              {/* Offset Image */}
+              <div style={{ position: 'absolute', bottom: '0', left: '0', width: '60%', height: '55%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', zIndex: 2, border: '6px solid var(--bg-primary)', animation: 'float 5s ease-in-out infinite alternate-reverse' }}>
+                <img loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80&fm=webp" alt="Data analytics dashboard" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              
+              {/* Floating Metric Card */}
+              <div className="floating-metric glass" style={{ position: 'absolute', top: '25%', left: '0%', padding: '1.2rem 1.5rem', borderRadius: '16px', zIndex: 3, display: 'flex', alignItems: 'center', gap: '1.2rem', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(15px)', boxShadow: '0 15px 35px rgba(0,0,0,0.1)', animation: 'float 6s ease-in-out infinite alternate' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--accent-teal)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 5px 15px rgba(20,184,166,0.3)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.2rem' }}>VIRTUALIZED OPS</div>
+                  <div style={{ fontSize: '1.5rem', color: 'var(--text-primary)', fontWeight: 800, lineHeight: 1 }}>99.8% <span style={{fontSize: '0.9rem', fontWeight: 600, color: 'var(--accent-teal)'}}>UPTIME</span></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -222,50 +261,77 @@ export const Strategy = () => {
 
 export const Foundation = () => {
   const { t } = useTranslation();
+  
+  const pillars = [
+    { id: '01', icon: <CheckCircle2 size={32} />, title: t('pillars.p1.title'), desc: t('pillars.p1.desc') },
+    { id: '02', icon: <Zap size={32} />, title: t('pillars.p2.title'), desc: t('pillars.p2.desc') },
+    { id: '03', icon: <Target size={32} />, title: t('pillars.p3.title'), desc: t('pillars.p3.desc') },
+    { id: '04', icon: <TrendingUp size={32} />, title: t('pillars.p4.title'), desc: t('pillars.p4.desc') },
+    { id: '05', icon: <CheckCircle2 size={32} />, title: t('pillars.p5.title'), desc: t('pillars.p5.desc') }
+  ];
+
   return (
-    <section className="bg-navy">
+    <section className="bg-navy" style={{ padding: '6rem 0', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
-        <div className="section-head reveal">
-          <span className="subtitle">{t('pillars.subtitle')}</span>
-          <h2>{t('pillars.title')}</h2>
-          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', padding: '1.5rem', background: 'rgba(0,0,0,0.3)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <p style={{ fontSize: '1.1rem', margin: 0 }}>{t('pillars.desc')}</p>
+        <div className="section-head reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '50px', marginBottom: '1.2rem' }}>
+            <Layers size={18} className="teal" />
+            <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800 }}>{t('pillars.subtitle')}</span>
           </div>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 900, letterSpacing: '-1.5px', marginBottom: '1rem', lineHeight: 1.1, color: '#fff' }}>{t('pillars.title')}</h2>
+          <p style={{ maxWidth: '650px', margin: '0 auto', fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{t('pillars.desc')}</p>
         </div>
-        <div className="grid-3" style={{ justifyContent: 'center', display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
-          <div className="glass-card reveal" style={{ flex: '1 1 300px', maxWidth: '350px', borderTop: '3px solid var(--accent-teal)' }}>
-            <div style={{ background: 'rgba(46,196,182,0.1)', padding: '0.5rem 1rem', borderRadius: '20px', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <h4 className="teal" style={{ margin: 0, fontSize: '1rem' }}>{t('pillars.p1.title')}</h4>
+
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+          gap: '1.8rem',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          {pillars.map((pillar) => (
+            <div 
+              key={pillar.id}
+              className="reveal"
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                backdropFilter: 'blur(15px)',
+                borderRadius: '28px',
+                border: '1px solid rgba(255,255,255,0.08)',
+                padding: '2.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.2rem',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseOver={(e) => { 
+                e.currentTarget.style.transform = 'translateY(-8px)'; 
+                e.currentTarget.style.borderColor = 'rgba(20,184,166,0.4)';
+                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+              }}
+              onMouseOut={(e) => { 
+                e.currentTarget.style.transform = 'translateY(0)'; 
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+              }}
+            >
+              <div style={{ position: 'absolute', top: '1.2rem', right: '1.5rem', fontSize: '2.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.03)', pointerEvents: 'none' }}>{pillar.id}</div>
+              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'linear-gradient(135deg, rgba(20,184,166,0.1), rgba(14,165,233,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(20,184,166,0.2)' }}>
+                {pillar.icon}
+              </div>
+              <div>
+                <h4 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#fff', marginBottom: '0.6rem', letterSpacing: '-0.5px' }}>{pillar.title}</h4>
+                <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.6 }}>{pillar.desc}</p>
+              </div>
             </div>
-            <p style={{ fontSize: '1rem', margin: 0, minHeight: '60px' }}>{t('pillars.p1.desc')}</p>
+          ))}
+          <div className="reveal" style={{ background: 'linear-gradient(135deg, var(--accent-teal), #0EA5E9)', borderRadius: '28px', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1.2rem', color: '#fff', textAlign: 'center', boxShadow: '0 15px 30px rgba(20,184,166,0.15)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}>
+            <Hexagon size={40} />
+            <h4 style={{ fontSize: '1.35rem', fontWeight: 900, margin: 0 }}>Driven by Purpose</h4>
+            <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.9)', margin: 0 }}>Join the mission to redefine automated retail.</p>
           </div>
-          <div className="glass-card reveal" style={{ flex: '1 1 300px', maxWidth: '350px', borderTop: '3px solid var(--accent-teal)' }}>
-            <div style={{ background: 'rgba(46,196,182,0.1)', padding: '0.5rem 1rem', borderRadius: '20px', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <h4 className="teal" style={{ margin: 0, fontSize: '1rem' }}>{t('pillars.p2.title')}</h4>
-            </div>
-            <p style={{ fontSize: '1rem', margin: 0, minHeight: '60px' }}>{t('pillars.p2.desc')}</p>
-          </div>
-          <div className="glass-card reveal" style={{ flex: '1 1 300px', maxWidth: '350px', borderTop: '3px solid var(--accent-teal)' }}>
-            <div style={{ background: 'rgba(46,196,182,0.1)', padding: '0.5rem 1rem', borderRadius: '20px', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <h4 className="teal" style={{ margin: 0, fontSize: '1rem' }}>{t('pillars.p3.title')}</h4>
-            </div>
-            <p style={{ fontSize: '1rem', margin: 0, minHeight: '60px' }}>{t('pillars.p3.desc')}</p>
-          </div>
-          <div className="glass-card reveal" style={{ flex: '1 1 300px', maxWidth: '350px', borderTop: '3px solid var(--accent-teal)' }}>
-            <div style={{ background: 'rgba(46,196,182,0.1)', padding: '0.5rem 1rem', borderRadius: '20px', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <h4 className="teal" style={{ margin: 0, fontSize: '1rem' }}>{t('pillars.p4.title')}</h4>
-            </div>
-            <p style={{ fontSize: '1rem', margin: 0, minHeight: '60px' }}>{t('pillars.p4.desc')}</p>
-          </div>
-          <div className="glass-card reveal" style={{ flex: '1 1 300px', maxWidth: '350px', borderTop: '3px solid var(--accent-teal)' }}>
-            <div style={{ background: 'rgba(46,196,182,0.1)', padding: '0.5rem 1rem', borderRadius: '20px', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <h4 className="teal" style={{ margin: 0, fontSize: '1rem' }}>{t('pillars.p5.title')}</h4>
-            </div>
-            <p style={{ fontSize: '1rem', margin: 0, minHeight: '60px' }}>{t('pillars.p5.desc')}</p>
-          </div>
-        </div>
-        <div className="text-center reveal" style={{ marginTop: '4rem' }}>
-          <h4 style={{ color: 'var(--text-muted)', fontWeight: 500, fontSize: '1.3rem' }}>{t('pillars.footer')}</h4>
         </div>
       </div>
     </section>
@@ -274,25 +340,27 @@ export const Foundation = () => {
 
 export const Clients = () => {
   const { t } = useTranslation();
+  const clients = [
+    { name: "Coffee Marcel", type: "Automated Coffee Systems" },
+    { name: "VLT Robotics", type: "Robotic Hardware" }
+  ];
+
   return (
-    <section className="bg-dark" style={{ background: "linear-gradient(to bottom, var(--bg-dark), rgba(11,31,51,0.4)), url('data:image/svg+xml,%3Csvg width=\\'40\\' height=\\'40\\' viewBox=\\'0 0 40 40\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cpath d=\\'M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z\\' fill=\\'%232ec4b6\\' fill-opacity=\\'0.015\\' fill-rule=\\'evenodd\\'/%3E%3C/svg%3E')" }}>
+    <section className="bg-dark" style={{ padding: '6rem 0' }}>
       <div className="container">
-        <div className="section-head reveal">
-          <h2>{t('clients.title')}</h2>
-          <p>{t('clients.desc1')}</p>
+        <div className="section-head reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="subtitle" style={{ letterSpacing: '4px' }}>Strategic Alliances</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>{t('clients.title')}</h2>
         </div>
-        <div className="grid-2 reveal">
-          <div className="glass-card text-center" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '180px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', transition: 'transform 0.3s ease' }}>
-            <div style={{ fontSize: '2.5rem', color: '#fff', fontWeight: 800, fontFamily: 'Outfit', letterSpacing: '-1px', marginBottom: '0.5rem', textShadow: '0 0 20px rgba(255,255,255,0.2)' }}>Coffee Marcel</div>
-            <span style={{ fontSize: '0.85rem', color: 'var(--accent-teal)', textTransform: 'uppercase', letterSpacing: '2px' }}>Premium Robotic Kiosks</span>
-          </div>
-          <div className="glass-card text-center" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '180px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', transition: 'transform 0.3s ease' }}>
-            <div style={{ fontSize: '2.5rem', color: '#fff', fontWeight: 800, fontFamily: 'Outfit', letterSpacing: '-1px', marginBottom: '0.5rem', textShadow: '0 0 20px rgba(255,255,255,0.2)' }}>VLT Robotics</div>
-            <span style={{ fontSize: '0.85rem', color: 'var(--accent-teal)', textTransform: 'uppercase', letterSpacing: '2px' }}>Hardware & Engineering</span>
-          </div>
-        </div>
-        <div className="reveal" style={{ width: '100%', maxWidth: '800px', margin: '4rem auto 0', textAlign: 'center', padding: '2rem', borderTop: '1px solid rgba(46,196,182,0.2)' }}>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', margin: 0, lineHeight: 1.6 }}>{t('clients.desc2')}</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          {clients.map((client, i) => (
+            <div key={i} className="reveal glass-card" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.borderColor = 'rgba(20,184,166,0.3)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}>
+               <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', marginBottom: '1rem' }}><Globe size={32} /></div>
+               <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', margin: 0 }}>{client.name}</h3>
+               <div style={{ height: '1px', width: '40px', background: 'var(--accent-teal)', opacity: 0.5 }}></div>
+               <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.5)', margin: 0, textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700 }}>{client.type}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -302,35 +370,50 @@ export const Clients = () => {
 export const OurExpertise = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-dark">
+    <section className="bg-dark expertise-section-dark" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
+      {/* Decorative Elements */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(20,184,166,0.03) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
+      
       <div className="container">
-        <div className="section-head reveal">
-          <h2>{t('expertise.title')}</h2>
-        </div>
-        <div className="grid-2 reveal">
-          <div className="glass-card">
-            <h3 className="teal" style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(46,196,182,0.2)', paddingBottom: '1rem' }}>{t('expertise.e1.title')}</h3>
-            <div style={{ marginBottom: '1.5rem', background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '10px' }}>
-              <p style={{ margin: 0, fontSize: '1.05rem' }}>{t('expertise.e1.d1')}</p>
-            </div>
-            <div style={{ marginBottom: '2rem' }}>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: 0 }}>{t('expertise.e1.d2')}</p>
-            </div>
-            <div style={{ borderLeft: '3px solid var(--accent-teal)', paddingLeft: '1.5rem', background: 'linear-gradient(90deg, rgba(46,196,182,0.05), transparent)', paddingTop: '1rem', paddingBottom: '1rem' }}>
-              <h4 style={{ color: '#fff', fontWeight: 500, margin: 0 }}>{t('expertise.e1.footer')}</h4>
-            </div>
+        <div className="section-head reveal" style={{ marginBottom: '5rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '50px', marginBottom: '1.5rem' }}>
+             <Cpu size={18} className="teal" />
+             <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800 }}>Intelligence Reservoir</span>
           </div>
-          <div className="glass-card">
-            <h3 className="teal" style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(46,196,182,0.2)', paddingBottom: '1rem' }}>{t('expertise.e2.title')}</h3>
-            <div style={{ marginBottom: '1.5rem', background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '10px' }}>
-              <p style={{ margin: 0, fontSize: '1.05rem' }}>{t('expertise.e2.d1')}</p>
-            </div>
-            <div style={{ marginBottom: '2rem' }}>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: 0 }}>{t('expertise.e2.d2')}</p>
-            </div>
-            <div style={{ borderLeft: '3px solid var(--accent-teal)', paddingLeft: '1.5rem', background: 'linear-gradient(90deg, rgba(46,196,182,0.05), transparent)', paddingTop: '1rem', paddingBottom: '1rem' }}>
-              <h4 style={{ color: '#fff', fontWeight: 500, margin: 0 }}>{t('expertise.e2.footer')}</h4>
-            </div>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px', marginBottom: '1.5rem' }}>{t('expertise.title')}</h2>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '1.5rem' }}>
+          {/* Card 1: Founder Experience */}
+          <div className="reveal" style={{ gridColumn: 'span 7', background: 'linear-gradient(135deg, rgba(11, 31, 51, 0.9), rgba(8, 18, 35, 0.95))', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '32px', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
+             <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(20,184,166,0.03)', fontWeight: 900, fontSize: '6rem', pointerEvents: 'none' }}><Activity /></div>
+             <div style={{ position: 'relative', zIndex: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
+                   <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(20,184,166,0.3)' }}><Users size={28} /></div>
+                   <h3 style={{ fontSize: '2rem', fontWeight: 800, color: '#fff', margin: 0 }}>{t('expertise.e1.title')}</h3>
+                </div>
+                <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem' }}>{t('expertise.e1.d1')}</p>
+                <div style={{ padding: '1.8rem', background: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                   <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{t('expertise.e1.d2')}</p>
+                </div>
+                <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                   <span className="teal" style={{ fontWeight: 800, fontSize: '0.9rem', letterSpacing: '1px' }}>{t('expertise.e1.footer')}</span>
+                   <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, var(--accent-teal), transparent)' }}></div>
+                </div>
+             </div>
+          </div>
+
+          {/* Card 2: Collaboration & Talent */}
+          <div className="reveal" style={{ gridColumn: 'span 5', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '32px', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+             <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}><Network size={24} /></div>
+             <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#fff', margin: 0 }}>{t('expertise.e2.title')}</h3>
+             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: 0 }}>{t('expertise.e2.d1')}</p>
+             <div style={{ flex: 1, padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '20px', border: '1px dashed rgba(255,255,255,0.1)' }}>
+                <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>{t('expertise.e2.d2')}</p>
+             </div>
+             <div style={{ background: 'rgba(20,184,166,0.1)', padding: '1.2rem', borderRadius: '100px', textAlign: 'center', border: '1px solid rgba(20,184,166,0.2)' }}>
+                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', letterSpacing: '1px' }}>{t('expertise.e2.footer')}</span>
+             </div>
           </div>
         </div>
       </div>
@@ -340,61 +423,82 @@ export const OurExpertise = () => {
 
 export const ContactSection = () => {
   const { t } = useTranslation();
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Re-implement the form submission logic from main.js if needed
-    // For now, keep the structure.
-  };
-
   return (
-    <section id="contact" className="cta-section">
+    <section id="contact" className="contact-section-split" style={{ padding: '8rem 0', background: '#FFFFFF' }}>
       <div className="container">
-        <div className="contact-grid">
-          <div className="contact-copy reveal">
-            <span className="subtitle">Get In Touch</span>
-            <h2 style={{ color: '#fff', marginBottom: '1.5rem' }}>{t('cta.title')}</h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '2.5rem', maxWidth: '420px' }}>{t('cta.desc')}</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: 'rgba(46,196,182,0.1)', border: '1px solid rgba(46,196,182,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Mail size={20} className="teal" /></div>
-                <div>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</p>
-                  <p style={{ margin: 0, color: '#fff', fontSize: '1rem' }}>opfluxsolution@gmail.com</p>
+        <div className="contact-split-grid">
+          {/* Left Panel: Form */}
+          <div className="contact-left-form reveal">
+            <span className="subtitle" style={{ color: 'var(--accent-teal)', fontWeight: 700, marginBottom: '1.5rem', display: 'block', fontSize: '1rem', letterSpacing: '2px' }}>GET IN TOUCH</span>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', color: 'var(--accent-teal)', fontWeight: 800, lineHeight: 1.1, marginBottom: '2rem', letterSpacing: '-2px' }}>
+              Let's Chat,<br />Reach Out to Us
+            </h2>
+            <p style={{ fontSize: '1.15rem', color: '#64748B', marginBottom: '3.5rem', maxWidth: '550px', lineHeight: 1.6 }}>
+              Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours.
+            </p>
+
+            <form className="traditional-form-premium">
+              <div className="form-row-2col">
+                <div className="form-group">
+                  <label>First Name</label>
+                  <input type="text" placeholder="First name" />
+                </div>
+                <div className="form-group">
+                  <label>Last Name</label>
+                  <input type="text" placeholder="Last name" />
                 </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: 'rgba(46,196,182,0.1)', border: '1px solid rgba(46,196,182,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Settings size={20} className="teal" /></div>
-                <div>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Operations</p>
-                  <p style={{ margin: 0, color: '#fff', fontSize: '1rem' }}>Automated Retail — Global Markets</p>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Email address" />
+              </div>
+              <div className="form-group">
+                <label>Message</label>
+                <textarea rows="5" placeholder="Leave us message"></textarea>
+              </div>
+              <div className="privacy-check" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '2.5rem' }}>
+                <input type="checkbox" id="privacy" style={{ width: '20px', height: '20px', cursor: 'pointer', accentColor: 'var(--accent-teal)' }} />
+                <label htmlFor="privacy" style={{ fontSize: '0.95rem', color: '#64748B', cursor: 'pointer' }}>
+                  I agree to our friendly <a href="#privacy" style={{ color: 'var(--accent-teal)', fontWeight: 700, textDecoration: 'underline' }}>privacy policy</a>
+                </label>
+              </div>
+              <button type="submit" className="cta-btn" style={{ width: '100%', padding: '1.2rem', borderRadius: '12px', background: 'var(--accent-teal)', color: '#fff', fontSize: '1.1rem', fontWeight: 700 }}>
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          {/* Right Panel: Image & Info Cards */}
+          <div className="contact-right-visuals reveal">
+            <div className="contact-visual-container" style={{ position: 'relative' }}>
+              {/* Blue Ripple Background Decoration */}
+              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(20,184,166,0.05) 0%, transparent 70%)', zIndex: -1 }}></div>
+              
+              <div className="contact-main-img-box" style={{ marginBottom: '2rem' }}>
+                <img 
+                  src="/assets/contact.png" 
+                  alt="OpFlux Contact" 
+                  style={{ width: '100%', borderRadius: '48px', objectFit: 'cover', minHeight: '400px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
+                />
+              </div>
+
+              <div className="contact-info-stack">
+                <div className="info-card-premium">
+                  <div className="info-card-icon"><Mail size={22} /></div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>Email</span>
+                    <span style={{ fontSize: '1rem', color: '#64748B' }}>opfluxsolution@gmail.com</span>
+                  </div>
+                </div>
+                <div className="info-card-premium">
+                  <div className="info-card-icon"><Phone size={22} /></div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>Phone</span>
+                    <span style={{ fontSize: '1rem', color: '#64748B' }}>+1 (555) 832-4923</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="contact-form-wrap reveal">
-            <form id="contact-form" className="contact-form" noValidate onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="contact-name">Full Name</label>
-                <input type="text" id="contact-name" name="from_name" placeholder="Your full name" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="contact-email">Email Address</label>
-                <input type="email" id="contact-email" name="reply_to" placeholder="your@email.com" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="contact-company">Company (Optional)</label>
-                <input type="text" id="contact-company" name="company" placeholder="Your company name" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="contact-message">Message</label>
-                <textarea id="contact-message" name="message" rows="4" placeholder="Tell us about your automated retail operations..." required></textarea>
-              </div>
-              <input type="hidden" name="to_email" value="opfluxsolution@gmail.com" />
-              <button type="submit" className="cta-btn form-submit-btn" id="submit-btn">
-                <span id="btn-text">Send Message</span>
-              </button>
-            </form>
           </div>
         </div>
       </div>
@@ -404,41 +508,95 @@ export const ContactSection = () => {
 
 export const AboutSection = () => {
   const { t } = useTranslation();
+
   return (
-    <section id="about" className="about-section-premium">
+    <section id="about" className="about-section-premium" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
       <div className="about-bg-overlay"></div>
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="section-head reveal">
-          <span className="subtitle">{t('about.subtitle')}</span>
-          <h2>{t('about.title')}</h2>
-        </div>
-        <div className="grid-2 reveal">
-          <div className="img-box about-sticky-media" style={{ borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', overflow: 'hidden', height: 'auto', minHeight: '350px' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(8,18,35,0.6) 0%, rgba(11,31,51,0.2) 100%)', zIndex: 2, pointerEvents: 'none' }}></div>
-            <img loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop&fm=webp" alt="Supply chain operations dashboard and engineering analytics" width="800" height="1000" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', filter: 'brightness(0.8) contrast(1.15)', display: 'block' }} />
+      
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.08, pointerEvents: 'none', background: 'radial-gradient(circle at 50% 50%, rgba(20,184,166,0.2) 0%, transparent 70%)', zIndex: 2 }}></div>
+      <div style={{ position: 'absolute', left: '10%', top: 0, width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(20,184,166,0.2), transparent)', zIndex: 2 }}></div>
+      <div style={{ position: 'absolute', right: '10%', top: 0, width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(20,184,166,0.2), transparent)', zIndex: 2 }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="section-head reveal" style={{ marginBottom: '5rem', textAlign: 'center' }}>
+          <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.3)', borderRadius: '100px', marginBottom: '2rem', backdropFilter: 'blur(10px)' }}>
+             <ShieldCheck size={20} className="teal" />
+             <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: 900 }}>{t('about.subtitle')}</span>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div className="glass-card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'rgba(46,196,182,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}><Box size={20} /></div>
-                <h3 className="teal" style={{ margin: 0 }}>{t('about.idTitle')}</h3>
+          <h2 className="reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, letterSpacing: '-2px', color: '#fff', lineHeight: 1, margin: 0, textShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>
+            {t('about.title')}
+          </h2>
+          <div className="reveal" style={{ width: '100px', height: '5px', background: 'var(--accent-teal)', margin: '2rem auto 0', borderRadius: '3px', boxShadow: '0 0 20px rgba(20,184,166,0.4)', animation: 'float 4s ease-in-out infinite' }}></div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '1.5rem' }}>
+          {/* Card 1: Main Identity */}
+          <div className="reveal" style={{ gridColumn: 'span 8', background: 'rgba(11, 31, 51, 0.85)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.1)', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.4)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.style.borderColor = 'rgba(20,184,166,0.3)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}>
+            <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(20,184,166,0.05)', fontWeight: 900, fontSize: '5rem', pointerEvents: 'none' }}>01</div>
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'linear-gradient(135deg, var(--accent-teal), #0EA5E9)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><Cpu size={30} /></div>
+                <h3 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff', margin: 0, letterSpacing: '-1px' }}>{t('about.idTitle')}</h3>
               </div>
-              <ul className="arrow-list" style={{ marginTop: '1rem' }}>
-                <li style={{ marginBottom: '1rem', paddingLeft: '2rem' }}>{t('about.id1')}</li>
-                <li style={{ paddingLeft: '2rem' }}>{t('about.id2')}</li>
-              </ul>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
+                <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                   <p style={{ fontSize: '1.15rem', color: '#fff', lineHeight: 1.6, margin: 0 }}>{t('about.id1')}</p>
+                </div>
+                <div>
+                   <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0, marginBottom: '2rem' }}>{t('about.id2')}</p>
+                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <div style={{ flex: 1, height: '4px', background: 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
+                        <div style={{ width: '92%', height: '100%', background: 'var(--accent-teal)' }}></div>
+                      </div>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--accent-teal)', fontWeight: 800 }}>92% OPTIMIZED</span>
+                   </div>
+                </div>
+              </div>
             </div>
-            <div className="glass-card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'rgba(46,196,182,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}><Truck size={20} /></div>
-                <h3 className="teal" style={{ margin: 0 }}>{t('about.logTitle')}</h3>
+          </div>
+
+          {/* Card 2: Logistics */}
+          <div className="reveal" style={{ gridColumn: 'span 4', gridRow: 'span 2', background: 'linear-gradient(180deg, rgba(14, 165, 233, 0.1), rgba(11, 31, 51, 0.9))', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(14,165,233,0.3)', padding: '3rem', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.3)', display: 'flex', flexDirection: 'column', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-8px)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
+            <div style={{ position: 'absolute', bottom: '1.5rem', right: '1.5rem', color: 'rgba(14,165,233,0.05)', fontWeight: 900, fontSize: '5rem', pointerEvents: 'none' }}>02</div>
+            <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(14, 165, 233, 0.1)', border: '1px solid rgba(14, 165, 233, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0EA5E9', marginBottom: '2.5rem' }}><Globe size={28} /></div>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', marginBottom: '2rem', letterSpacing: '-1px' }}>{t('about.logTitle')}</h3>
+              <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2.5rem' }}>{t('about.log1')}</p>
+              <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1.5rem', borderRadius: '20px', border: '1px solid rgba(14,165,233,0.15)' }}>
+                 <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.5 }}>{t('about.log2')}</p>
               </div>
-              <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', marginBottom: '1.5rem', borderLeft: '3px solid var(--accent-teal)' }}>
-                <p style={{ fontSize: '1rem', color: '#fff', margin: 0 }}>{t('about.log1')}</p>
+              <div style={{ marginTop: 'auto', paddingTop: '2.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--accent-teal)', padding: '1.2rem 1.8rem', borderRadius: '100px', boxShadow: '0 10px 20px rgba(20,184,166,0.2)' }}>
+                  <Truck size={22} color="#fff" />
+                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', letterSpacing: '1px' }}>{t('about.log3')}</span>
+                </div>
               </div>
-              <p style={{ fontSize: '1rem', marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('about.log2')}</p>
-              <p style={{ fontSize: '1rem', fontWeight: 500, color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>{t('about.log3')}</p>
             </div>
+          </div>
+
+          {/* Card 3: Metrics */}
+          <div className="reveal" style={{ gridColumn: 'span 4', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.08)', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '2rem', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}>
+             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ color: 'var(--accent-teal)' }}><Activity size={32} /></div>
+                <div style={{ fontSize: '2.8rem', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px' }}>99.9%</div>
+             </div>
+             <div>
+                <h4 style={{ color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800, fontSize: '0.8rem', marginBottom: '0.8rem' }}>PRECISION_YIELD</h4>
+                <div style={{ height: '3px', width: '100%', background: 'rgba(255,255,255,0.08)', borderRadius: '1.5px', position: 'relative' }}>
+                   <div style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: '99.9%', background: 'var(--accent-teal)' }}></div>
+                </div>
+             </div>
+          </div>
+
+          {/* Card 4: System Status */}
+          <div className="reveal" style={{ gridColumn: 'span 4', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.08)', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '2rem', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}>
+             <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 15px #22C55E', animation: 'pulse 1.5s infinite' }}></div>
+                <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', letterSpacing: '0.5px' }}>CORE_READY</span>
+             </div>
+             <div style={{ display: 'flex', gap: '0.5rem' }}>
+                {[1,2,3,4,5,6,7,8].map(i => <div key={i} style={{ flex: 1, height: '8px', background: i < 7 ? 'var(--accent-teal)' : 'rgba(255,255,255,0.08)', borderRadius: '2px' }}></div>)}
+             </div>
           </div>
         </div>
       </div>
@@ -448,52 +606,87 @@ export const AboutSection = () => {
 
 export const WhatWeDo = () => {
   const { t } = useTranslation();
+  const [hoveredCard, setHoveredCard] = React.useState(null);
+
+  const services = [
+    {
+      id: 0,
+      icon: <Timer size={30} />,
+      title: t('services.s1.title'),
+      desc: t('services.s1.desc'),
+      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 1,
+      icon: <Settings size={30} />,
+      title: t('services.s2.title'),
+      desc: t('services.s2.desc'),
+      img: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 2,
+      icon: <Package size={30} />,
+      title: t('services.s3.title'),
+      desc: t('services.s3.desc'),
+      img: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 3,
+      icon: <TrendingUp size={30} />,
+      title: t('services.s4.title'),
+      desc: t('services.s4.desc'),
+      img: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1000&auto=format&fit=crop'
+    }
+  ];
+
   return (
-    <section id="services" className="services-section-grid">
+    <section id="services" className="services-section-grid" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
       <div className="services-bg-overlay"></div>
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="section-head reveal">
-          <span className="subtitle">{t('services.subtitle')}</span>
-          <h2>{t('services.title')}</h2>
-          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-            <p style={{ fontSize: '1.2rem', marginBottom: 0 }}>
-              <span>{t('services.desc1')}</span><br />
-              <span className="teal" style={{ fontWeight: 600 }}>{t('services.desc2')}</span>
-            </p>
+      
+      <div style={{ position: 'absolute', top: '10%', left: '5%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(20,184,166,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(50px)', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(60px)', pointerEvents: 'none' }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="section-head reveal" style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.3)', borderRadius: '100px', marginBottom: '2rem', backdropFilter: 'blur(10px)' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)', display: 'block', animation: 'float 2s infinite alternate' }}></span>
+            <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: 900 }}>{t('services.subtitle')}</span>
           </div>
+          <h2 className="reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, letterSpacing: '-2px', margin: '0 0 2rem 0', color: '#fff', textShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>{t('services.title')}</h2>
+          <div className="reveal" style={{ width: '100px', height: '5px', background: 'var(--accent-teal)', margin: '2rem auto 0', borderRadius: '3px', boxShadow: '0 0 20px rgba(20,184,166,0.4)', animation: 'float 4s ease-in-out infinite' }}></div>
         </div>
-        <div className="grid-4">
-          <div className="glass-card reveal" style={{ background: "linear-gradient(to bottom, rgba(11,31,51,0.95), rgba(11,31,51,0.98)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop&fm=webp') center/cover", position: 'relative', overflow: 'hidden', border: '1px solid rgba(46,196,182,0.1)' }}>
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{ marginBottom: '1.5rem' }}><Timer size={40} className="teal" /></div>
-              <h3 className="mb-2">{t('services.s1.title')}</h3>
-              <p style={{ fontSize: '0.95rem' }}>{t('services.s1.desc')}</p>
-            </div>
-          </div>
-          <div className="glass-card reveal" style={{ background: "linear-gradient(to bottom, rgba(11,31,51,0.95), rgba(11,31,51,0.98)), url('/hero-bg.webp') center/cover", position: 'relative', overflow: 'hidden', border: '1px solid rgba(46,196,182,0.1)' }}>
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{ marginBottom: '1.5rem' }}><Settings size={40} className="teal" /></div>
-              <h3 className="mb-2">{t('services.s2.title')}</h3>
-              <p style={{ fontSize: '0.95rem' }}>{t('services.s2.desc')}</p>
-            </div>
-          </div>
-          <div className="glass-card reveal" style={{ background: "linear-gradient(to bottom, rgba(11,31,51,0.95), rgba(11,31,51,0.98)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop&fm=webp') center/cover", position: 'relative', overflow: 'hidden', border: '1px solid rgba(46,196,182,0.1)' }}>
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{ marginBottom: '1.5rem' }}><Package size={40} className="teal" /></div>
-              <h3 className="mb-2">{t('services.s3.title')}</h3>
-              <p style={{ fontSize: '0.95rem' }}>{t('services.s3.desc')}</p>
-            </div>
-          </div>
-          <div className="glass-card reveal" style={{ background: "linear-gradient(to bottom, rgba(11,31,51,0.95), rgba(11,31,51,0.98)), url('/hero-bg.webp') center/cover", position: 'relative', overflow: 'hidden', border: '1px solid rgba(46,196,182,0.1)' }}>
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{ marginBottom: '1.5rem' }}><TrendingUp size={40} className="teal" /></div>
-              <h3 className="mb-2">{t('services.s4.title')}</h3>
-              <p style={{ fontSize: '0.95rem' }}>{t('services.s4.desc')}</p>
-            </div>
-          </div>
-        </div>
-        <div className="reveal" style={{ width: '100%', maxWidth: '600px', margin: '4rem auto 0', padding: '2rem', border: '1px solid var(--accent-teal)', borderRadius: '15px', background: 'rgba(46,196,182,0.05)', textAlign: 'center' }}>
-          <h4 style={{ color: '#fff', fontWeight: 500, margin: 0 }}>{t('services.footer')}</h4>
+
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.8rem' }}>
+          {services.map((srv, idx) => {
+            const isHovered = hoveredCard === idx;
+            return (
+              <div 
+                key={srv.id}
+                onMouseEnter={() => setHoveredCard(idx)}
+                onMouseLeave={() => setHoveredCard(null)}
+                style={{
+                  position: 'relative', height: '400px', borderRadius: '32px', overflow: 'hidden',
+                  cursor: 'default', transition: 'all 0.5s ease',
+                  border: isHovered ? '1px solid rgba(20,184,166,0.5)' : '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: isHovered ? '0 30px 70px rgba(0,0,0,0.5)' : '0 10px 30px rgba(0,0,0,0.2)'
+                }}
+              >
+                <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+                  <img loading="lazy" src={srv.img} alt={srv.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: isHovered ? 'scale(1.1)' : 'scale(1)', filter: isHovered ? 'brightness(0.5) blur(1px)' : 'brightness(0.8)', transition: 'all 0.7s ease' }} />
+                </div>
+                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: isHovered ? '100%' : '110px', background: isHovered ? 'rgba(11,31,51,0.85)' : 'linear-gradient(to top, rgba(11,31,51,0.95) 0%, rgba(11,31,51,0.4) 100%)', backdropFilter: isHovered ? 'blur(15px)' : 'blur(5px)', transition: 'all 0.5s ease', zIndex: 2 }}></div>
+                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%', zIndex: 3 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: isHovered ? '1.5rem' : '0', transition: 'all 0.5s ease' }}>
+                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(20,184,166,0.2)', border: '1px solid rgba(20,184,166,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}>{srv.icon}</div>
+                    <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>{srv.title}</h3>
+                  </div>
+                  <div style={{ maxHeight: isHovered ? '200px' : '0px', opacity: isHovered ? 1 : 0, transform: isHovered ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.5s ease', overflow: 'hidden' }}>
+                    <p style={{ margin: 0, color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', lineHeight: 1.5 }}>{srv.desc}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -719,13 +912,7 @@ export const Logistics = () => {
           </div>
           <div className="supply-head-strip">
             <figure className="supply-head-thumb">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80&fm=webp" alt="Warehouse operations and automated retail logistics" width="900" height="600" />
-            </figure>
-            <figure className="supply-head-thumb">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80&fm=webp" alt="Supply chain operations dashboard and inventory systems" width="900" height="600" />
-            </figure>
-            <figure className="supply-head-thumb">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=900&q=80&fm=webp" alt="Supply chain movement and operational efficiency" width="900" height="600" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80&fm=webp" alt="Warehouse" width="900" height="600" />
             </figure>
           </div>
         </div>
@@ -735,35 +922,8 @@ export const Logistics = () => {
               <article className="glass-card supply-card reveal">
                 <div className="supply-card-icon"><Package size={24} /></div>
                 <h4 className="teal">{t('supply.s1.title')}</h4>
-                <p style={{ fontSize: '1.1rem', color: '#fff', margin: 0 }}>{t('supply.s1.desc')}</p>
+                <p>{t('supply.s1.desc')}</p>
               </article>
-              <article className="glass-card supply-card reveal">
-                <div className="supply-card-icon"><RefreshCw size={24} /></div>
-                <h4 className="teal">{t('supply.s2.title')}</h4>
-                <p style={{ fontSize: '1.1rem', color: '#fff', margin: 0 }}>{t('supply.s2.desc')}</p>
-              </article>
-            </div>
-            <div className="supply-summary reveal">
-              <h3 style={{ fontWeight: 500, fontSize: '1.5rem', margin: 0 }}>
-                <span>{t('supply.f1')}</span><br />
-                <span className="teal">{t('supply.f2')}</span>
-              </h3>
-            </div>
-          </div>
-          <div className="supply-visual-col reveal">
-            <figure className="supply-main-image">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80&fm=webp" alt="Global warehouse operations and supply chain precision" width="1600" height="1066" />
-              <div className="supply-image-overlay"></div>
-            </figure>
-            <div className="supply-sub-images">
-              <figure className="supply-sub-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80&fm=webp" alt="Intelligent inventory management and business intelligence" width="1200" height="800" />
-                <div className="supply-image-overlay soft"></div>
-              </figure>
-              <figure className="supply-sub-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=1200&q=80&fm=webp" alt="Advanced supply chain movement tracking" width="1200" height="800" />
-                <div className="supply-image-overlay soft"></div>
-              </figure>
             </div>
           </div>
         </div>
