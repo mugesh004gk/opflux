@@ -1,0 +1,16 @@
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.lang-btn {
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.lang-btn:hover {
+  color: #fff !important;
+}
+.lang-btn.active {
+  color: var(--accent-teal) !important;
+}
