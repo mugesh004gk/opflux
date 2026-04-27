@@ -6,7 +6,7 @@ import {
   AlertTriangle, RefreshCw, Mail, Box, Truck, CheckCircle2,
   ShieldCheck, Globe, Cpu, Activity, Info, Rocket, 
   Database, Server, Network, Terminal, LayoutGrid, Layers, Hexagon,
-  Users, MessageSquare, Calendar, ArrowRight, MousePointer2, Coffee, Phone
+  Users, MessageSquare, Calendar, ArrowRight, MousePointer2, Coffee, Phone, Play, MapPin
 } from 'lucide-react';
 
 export const Hero = () => {
@@ -56,7 +56,7 @@ export const Hero = () => {
           <div className="animated-machine">
             <div className="vertical-scanner-line"></div>
             <div className="machine-mask">
-              <img loading="lazy" src="/machine-core.webp" alt="OpFlux automated retail operations and robotic kiosque management system" className="machine-img" width="1000" height="1200" />
+              <img loading="lazy" src="/machine-core.webp" alt="OpFlux automated retail operations" className="machine-img" width="1000" height="1200" />
             </div>
             <div className="floating-hero-card fhc-right">
               <h4 className="fhc-value">100%</h4>
@@ -424,80 +424,121 @@ export const OurExpertise = () => {
 export const ContactSection = () => {
   const { t } = useTranslation();
   return (
-    <section id="contact" className="contact-section-split" style={{ padding: '8rem 0', background: '#FFFFFF' }}>
+    <section id="contact" className="contact-section-split">
       <div className="container">
         <div className="contact-split-grid">
           {/* Left Panel: Form */}
           <div className="contact-left-form reveal">
-            <span className="subtitle" style={{ color: 'var(--accent-teal)', fontWeight: 700, marginBottom: '1.5rem', display: 'block', fontSize: '1rem', letterSpacing: '2px' }}>GET IN TOUCH</span>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', color: 'var(--accent-teal)', fontWeight: 800, lineHeight: 1.1, marginBottom: '2rem', letterSpacing: '-2px' }}>
-              Let's Chat,<br />Reach Out to Us
-            </h2>
-            <p style={{ fontSize: '1.15rem', color: '#64748B', marginBottom: '3.5rem', maxWidth: '550px', lineHeight: 1.6 }}>
+            <span style={{ color: 'var(--accent-teal)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '1.5rem', display: 'block' }}>Get in Touch</span>
+            <h2>Let's Chat, <span className="teal-text">Reach Out</span> to Us</h2>
+            <p style={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px' }}>
               Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours.
             </p>
 
-            <form className="traditional-form-premium">
+            <form className="traditional-form-premium" onSubmit={(e) => e.preventDefault()}>
               <div className="form-row-2col">
                 <div className="form-group">
                   <label>First Name</label>
-                  <input type="text" placeholder="First name" />
+                  <input type="text" placeholder="Enter your first name" />
                 </div>
                 <div className="form-group">
                   <label>Last Name</label>
-                  <input type="text" placeholder="Last name" />
+                  <input type="text" placeholder="Enter your last name" />
                 </div>
               </div>
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="Email address" />
+                <input type="email" placeholder="Enter your email address" />
               </div>
               <div className="form-group">
                 <label>Message</label>
-                <textarea rows="5" placeholder="Leave us message"></textarea>
+                <textarea rows="4" placeholder="Write your message here..."></textarea>
               </div>
-              <div className="privacy-check" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '2.5rem' }}>
-                <input type="checkbox" id="privacy" style={{ width: '20px', height: '20px', cursor: 'pointer', accentColor: 'var(--accent-teal)' }} />
-                <label htmlFor="privacy" style={{ fontSize: '0.95rem', color: '#64748B', cursor: 'pointer' }}>
-                  I agree to our friendly <a href="#privacy" style={{ color: 'var(--accent-teal)', fontWeight: 700, textDecoration: 'underline' }}>privacy policy</a>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', margin: '0.5rem 0 1.5rem' }}>
+                <input type="checkbox" id="privacy" style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-teal)' }} />
+                <label htmlFor="privacy" style={{ fontSize: '0.9rem', color: '#64748B', cursor: 'pointer' }}>
+                  I agree to our <a href="#" style={{ color: 'var(--accent-teal)', fontWeight: 700, textDecoration: 'underline' }}>privacy policy</a>
                 </label>
               </div>
-              <button type="submit" className="cta-btn" style={{ width: '100%', padding: '1.2rem', borderRadius: '12px', background: 'var(--accent-teal)', color: '#fff', fontSize: '1.1rem', fontWeight: 700 }}>
-                Send Message
+
+              <button type="submit" className="send-msg-btn">
+                Send Message <ArrowRight size={20} />
               </button>
             </form>
           </div>
 
-          {/* Right Panel: Image & Info Cards */}
-          <div className="contact-right-visuals reveal">
-            <div className="contact-visual-container" style={{ position: 'relative' }}>
-              {/* Blue Ripple Background Decoration */}
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(20,184,166,0.05) 0%, transparent 70%)', zIndex: -1 }}></div>
-              
-              <div className="contact-main-img-box" style={{ marginBottom: '2rem' }}>
-                <img 
-                  src="/assets/contact.png" 
-                  alt="OpFlux Contact" 
-                  style={{ width: '100%', borderRadius: '48px', objectFit: 'cover', minHeight: '400px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
-                />
-              </div>
+          {/* Right Panel: Visuals & Cards */}
+          <div className="contact-right-visuals reveal" style={{ transitionDelay: '0.2s' }}>
+            <div className="contact-main-img-box">
+              <img src="/images/contact-hero.png" alt="OpFlux Global Communications" />
+            </div>
 
-              <div className="contact-info-stack">
-                <div className="info-card-premium">
-                  <div className="info-card-icon"><Mail size={22} /></div>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>Email</span>
-                    <span style={{ fontSize: '1rem', color: '#64748B' }}>opfluxsolution@gmail.com</span>
+            <div className="contact-info-stack stagger-reveal">
+              <a href="mailto:opfluxsolution@gmail.com" className="info-card-premium reveal">
+                <div className="info-card-left">
+                  <div className="info-card-icon"><Mail size={24} /></div>
+                  <div className="info-card-text">
+                    <h4>Email Us</h4>
+                    <p>opfluxsolution@gmail.com</p>
                   </div>
                 </div>
-                <div className="info-card-premium">
-                  <div className="info-card-icon"><Phone size={22} /></div>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>Phone</span>
-                    <span style={{ fontSize: '1rem', color: '#64748B' }}>+1 (555) 832-4923</span>
+                <ArrowRight className="info-card-arrow" size={20} />
+              </a>
+
+              <a href="tel:+15558324923" className="info-card-premium reveal">
+                <div className="info-card-left">
+                  <div className="info-card-icon"><Phone size={24} /></div>
+                  <div className="info-card-text">
+                    <h4>Call Us</h4>
+                    <p>+1 (555) 832-4923</p>
                   </div>
                 </div>
+                <ArrowRight className="info-card-arrow" size={20} />
+              </a>
+
+              <div className="meeting-card-premium reveal">
+                <div className="meeting-card-left">
+                  <div className="info-card-icon" style={{ background: 'rgba(14, 165, 233, 0.05)', color: '#0EA5E9' }}><Calendar size={24} /></div>
+                  <div className="meeting-card-text">
+                    <h4>Prefer a Meeting?</h4>
+                    <p>Schedule a free consultation with our experts</p>
+                  </div>
+                </div>
+                <a href="#" className="book-meeting-btn">Book a Meeting</a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Trust Strip */}
+        <div className="contact-trust-strip reveal">
+          <div className="trust-item">
+            <div className="trust-icon"><ShieldCheck size={24} /></div>
+            <div className="trust-info">
+              <h5>Secure & Confidential</h5>
+              <p>Your information is safe with us. We never share your data.</p>
+            </div>
+          </div>
+          <div className="trust-item">
+            <div className="trust-icon"><Timer size={24} /></div>
+            <div className="trust-info">
+              <h5>Quick Response</h5>
+              <p>We respond to all inquiries within 24 business hours.</p>
+            </div>
+          </div>
+          <div className="trust-item">
+            <div className="trust-icon"><Activity size={24} /></div>
+            <div className="trust-info">
+              <h5>Expert Support</h5>
+              <p>Our team is here to help you find the right solution.</p>
+            </div>
+          </div>
+          <div className="trust-item">
+            <div className="trust-icon"><Globe size={24} /></div>
+            <div className="trust-info">
+              <h5>Global Presence</h5>
+              <p>Serving automated retail operators worldwide.</p>
             </div>
           </div>
         </div>
@@ -510,95 +551,142 @@ export const AboutSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="about" className="about-section-premium" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
-      <div className="about-bg-overlay"></div>
+    <section id="about" className="about-premium-edition">
+      <div className="premium-glow-bg"></div>
       
-      <div style={{ position: 'absolute', inset: 0, opacity: 0.08, pointerEvents: 'none', background: 'radial-gradient(circle at 50% 50%, rgba(20,184,166,0.2) 0%, transparent 70%)', zIndex: 2 }}></div>
-      <div style={{ position: 'absolute', left: '10%', top: 0, width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(20,184,166,0.2), transparent)', zIndex: 2 }}></div>
-      <div style={{ position: 'absolute', right: '10%', top: 0, width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(20,184,166,0.2), transparent)', zIndex: 2 }}></div>
-
-      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-        <div className="section-head reveal" style={{ marginBottom: '5rem', textAlign: 'center' }}>
-          <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.3)', borderRadius: '100px', marginBottom: '2rem', backdropFilter: 'blur(10px)' }}>
-             <ShieldCheck size={20} className="teal" />
-             <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: 900 }}>{t('about.subtitle')}</span>
-          </div>
-          <h2 className="reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, letterSpacing: '-2px', color: '#fff', lineHeight: 1, margin: 0, textShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>
-            {t('about.title')}
-          </h2>
-          <div className="reveal" style={{ width: '100px', height: '5px', background: 'var(--accent-teal)', margin: '2rem auto 0', borderRadius: '3px', boxShadow: '0 0 20px rgba(20,184,166,0.4)', animation: 'float 4s ease-in-out infinite' }}></div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '1.5rem' }}>
-          {/* Card 1: Main Identity */}
-          <div className="reveal" style={{ gridColumn: 'span 8', background: 'rgba(11, 31, 51, 0.85)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.1)', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.4)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.style.borderColor = 'rgba(20,184,166,0.3)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}>
-            <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(20,184,166,0.05)', fontWeight: 900, fontSize: '5rem', pointerEvents: 'none' }}>01</div>
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
-                <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'linear-gradient(135deg, var(--accent-teal), #0EA5E9)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><Cpu size={30} /></div>
-                <h3 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff', margin: 0, letterSpacing: '-1px' }}>{t('about.idTitle')}</h3>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
-                <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                   <p style={{ fontSize: '1.15rem', color: '#fff', lineHeight: 1.6, margin: 0 }}>{t('about.id1')}</p>
-                </div>
-                <div>
-                   <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0, marginBottom: '2rem' }}>{t('about.id2')}</p>
-                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                      <div style={{ flex: 1, height: '4px', background: 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
-                        <div style={{ width: '92%', height: '100%', background: 'var(--accent-teal)' }}></div>
-                      </div>
-                      <span style={{ fontSize: '0.8rem', color: 'var(--accent-teal)', fontWeight: 800 }}>92% OPTIMIZED</span>
-                   </div>
-                </div>
+      <div className="container">
+        
+        {/* HERO SECTION - ANTIGRAVITY EDITION */}
+        <div className="about-premium-hero">
+          <div className="hero-content-left reveal">
+            <span className="ops-eyebrow" style={{ color: 'var(--accent-teal)', letterSpacing: '4px' }}>OUR STORY</span>
+            <h1 className="premium-title">
+              Intelligence <span className="accent">Operated.</span><br/>
+              Reliability <span className="accent">Delivered.</span>
+            </h1>
+            <p className="premium-desc-p">
+              OpFlux Solution isn't just a consulting firm; we are the operational heartbeat for automated retail systems. We translate complex engineering into consistent real-world performance.
+            </p>
+            
+            <div className="premium-badge-v2 reveal">
+              <div className="badge-v2-icon"><ShieldCheck size={32} /></div>
+              <div className="badge-v2-text">
+                The bridge between high-tech vision —<br/>
+                <b>and hands-on execution.</b>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Logistics */}
-          <div className="reveal" style={{ gridColumn: 'span 4', gridRow: 'span 2', background: 'linear-gradient(180deg, rgba(14, 165, 233, 0.1), rgba(11, 31, 51, 0.9))', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(14,165,233,0.3)', padding: '3rem', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.3)', display: 'flex', flexDirection: 'column', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-8px)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-            <div style={{ position: 'absolute', bottom: '1.5rem', right: '1.5rem', color: 'rgba(14,165,233,0.05)', fontWeight: 900, fontSize: '5rem', pointerEvents: 'none' }}>02</div>
-            <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(14, 165, 233, 0.1)', border: '1px solid rgba(14, 165, 233, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0EA5E9', marginBottom: '2.5rem' }}><Globe size={28} /></div>
-              <h3 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', marginBottom: '2rem', letterSpacing: '-1px' }}>{t('about.logTitle')}</h3>
-              <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2.5rem' }}>{t('about.log1')}</p>
-              <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1.5rem', borderRadius: '20px', border: '1px solid rgba(14,165,233,0.15)' }}>
-                 <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.5 }}>{t('about.log2')}</p>
+          <div className="premium-hero-visual reveal">
+            <div className="premium-img-container">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop" alt="OpFlux Robotic Automation" />
+            </div>
+            
+            {/* Floating Intelligence Nodes */}
+            <div className="floating-node-card node-1 reveal">
+              <div className="point-icon-box" style={{ marginBottom: 0 }}><Activity size={20} /></div>
+              <div className="node-text">
+                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>99.2% Uptime</p>
+                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>Operational Precision</p>
               </div>
-              <div style={{ marginTop: 'auto', paddingTop: '2.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--accent-teal)', padding: '1.2rem 1.8rem', borderRadius: '100px', boxShadow: '0 10px 20px rgba(20,184,166,0.2)' }}>
-                  <Truck size={22} color="#fff" />
-                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', letterSpacing: '1px' }}>{t('about.log3')}</span>
+            </div>
+            
+            <div className="floating-node-card node-2 reveal">
+              <div className="point-icon-box" style={{ marginBottom: 0 }}><TrendingUp size={20} /></div>
+              <div className="node-text">
+                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>Scale Ready</p>
+                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>Multi-site growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* OPERATIONS WALL - ANTIGRAVITY EDITION */}
+        <div className="premium-ops-wall">
+          <div className="ops-wall-grid">
+            <div className="wall-visual-tilt reveal">
+              <div className="tilt-inner">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="OpFlux Office" />
+                <div className="wall-overlay-logo">
+                  <h2 className="wall-logo-text">OpFlux</h2>
+                </div>
+              </div>
+            </div>
+            
+            <div className="premium-points-list stagger-reveal">
+              <div className="premium-point-item reveal">
+                <div className="point-icon-box"><Settings size={24} /></div>
+                <div className="point-info-text">
+                  <h4>Operations Management</h4>
+                  <p>Managing day-to-day performance and system execution across all kiosque locations.</p>
+                </div>
+              </div>
+              <div className="premium-point-item reveal">
+                <div className="point-icon-box"><Truck size={24} /></div>
+                <div className="point-info-text">
+                  <h4>Logistics & Supply Chain</h4>
+                  <p>Intelligent inventory planning, demand forecasting, and seamless multi-site coordination.</p>
+                </div>
+              </div>
+              <div className="premium-point-item reveal">
+                <div className="point-icon-box"><ShieldCheck size={24} /></div>
+                <div className="point-info-text">
+                  <h4>Technical Reliability</h4>
+                  <p>Proactive maintenance, real-time monitoring, and rapid issue resolution.</p>
+                </div>
+              </div>
+              <div className="premium-point-item reveal">
+                <div className="point-icon-box"><TrendingUp size={24} /></div>
+                <div className="point-info-text">
+                  <h4>Scalable Growth Support</h4>
+                  <p>Data-driven consulting, performance optimization, and business growth enablement.</p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Card 3: Metrics */}
-          <div className="reveal" style={{ gridColumn: 'span 4', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.08)', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '2rem', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}>
-             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ color: 'var(--accent-teal)' }}><Activity size={32} /></div>
-                <div style={{ fontSize: '2.8rem', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px' }}>99.9%</div>
-             </div>
-             <div>
-                <h4 style={{ color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800, fontSize: '0.8rem', marginBottom: '0.8rem' }}>PRECISION_YIELD</h4>
-                <div style={{ height: '3px', width: '100%', background: 'rgba(255,255,255,0.08)', borderRadius: '1.5px', position: 'relative' }}>
-                   <div style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: '99.9%', background: 'var(--accent-teal)' }}></div>
-                </div>
-             </div>
+        {/* METRICS STRIP - ANTIGRAVITY EDITION */}
+        <div className="premium-metrics-strip stagger-reveal">
+          <div className="metric-v4 reveal">
+            <div className="metric-v4-val"><CountUp end={99.2} suffix="%" /></div>
+            <div className="metric-v4-label">System Uptime</div>
+            <div className="metric-v4-desc">Consistent performance across all locations.</div>
           </div>
-
-          {/* Card 4: System Status */}
-          <div className="reveal" style={{ gridColumn: 'span 4', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.08)', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '2rem', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}>
-             <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 15px #22C55E', animation: 'pulse 1.5s infinite' }}></div>
-                <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', letterSpacing: '0.5px' }}>CORE_READY</span>
-             </div>
-             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                {[1,2,3,4,5,6,7,8].map(i => <div key={i} style={{ flex: 1, height: '8px', background: i < 7 ? 'var(--accent-teal)' : 'rgba(255,255,255,0.08)', borderRadius: '2px' }}></div>)}
-             </div>
+          <div className="metric-v4 reveal">
+            <div className="metric-v4-val">24/7</div>
+            <div className="metric-v4-label">Real-Time Support</div>
+            <div className="metric-v4-desc">Monitoring and support that never stops.</div>
+          </div>
+          <div className="metric-v4 reveal">
+             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>Multi-Site</div>
+             <div className="metric-v4-label">Multi-Site Ready</div>
+             <div className="metric-v4-desc">Built to operate and scale across multiple locations.</div>
+          </div>
+          <div className="metric-v4 reveal">
+             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>France</div>
+             <div className="metric-v4-label">France Based</div>
+             <div className="metric-v4-desc">Headquartered in Île-de-France, serving across the region.</div>
           </div>
         </div>
+
+        {/* QUOTE SECTION - ANTIGRAVITY EDITION */}
+        <div className="premium-quote-section reveal">
+          <div className="quote-bg-watermark">OPFLUX SOLUTION</div>
+          <div className="quote-content-v4">
+            <div className="quote-icon-v4"><MessageSquare size={80} /></div>
+            <div className="quote-main-v4">
+              <h3>Our Philosophy</h3>
+              <h2>We run complete<br/>operational systems.</h2>
+            </div>
+            <div className="quote-side-v4">
+              <p>
+                Every decision, every process, and every system is aligned to one goal — reliable operations that drive performance and long-term value.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -606,239 +694,364 @@ export const AboutSection = () => {
 
 export const WhatWeDo = () => {
   const { t } = useTranslation();
-  const [hoveredCard, setHoveredCard] = React.useState(null);
 
   const services = [
     {
-      id: 0,
-      icon: <Timer size={30} />,
-      title: t('services.s1.title'),
-      desc: t('services.s1.desc'),
-      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop'
+      id: "01",
+      icon: <Activity size={24} />,
+      title: "Operations Management",
+      desc: "Managing day-to-day performance and system execution across all kiosque locations.",
+      img: "/images/service-ops.png"
     },
     {
-      id: 1,
-      icon: <Settings size={30} />,
-      title: t('services.s2.title'),
-      desc: t('services.s2.desc'),
-      img: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1000&auto=format&fit=crop'
+      id: "02",
+      icon: <Truck size={24} />,
+      title: "Logistics & Supply Chain Control",
+      desc: "Ensuring efficient inventory flow, demand-based planning, and multi-site coordination.",
+      img: "/images/service-logistics.png"
     },
     {
-      id: 2,
-      icon: <Package size={30} />,
-      title: t('services.s3.title'),
-      desc: t('services.s3.desc'),
-      img: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1000&auto=format&fit=crop'
+      id: "03",
+      icon: <ShieldCheck size={24} />,
+      title: "Technical Operations & Maintenance",
+      desc: "Maintaining system reliability through monitoring, diagnostics, and proactive support.",
+      img: "/images/service-tech.png"
     },
     {
-      id: 3,
-      icon: <TrendingUp size={30} />,
-      title: t('services.s4.title'),
-      desc: t('services.s4.desc'),
-      img: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1000&auto=format&fit=crop'
+      id: "04",
+      icon: <Users size={24} />,
+      title: "Business & Management Consulting",
+      desc: "Enhancing performance through marketing insights, CRM optimization, and site analysis.",
+      img: "/images/service-consulting.png"
     }
   ];
 
-  return (
-    <section id="services" className="services-section-grid" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
-      <div className="services-bg-overlay"></div>
-      
-      <div style={{ position: 'absolute', top: '10%', left: '5%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(20,184,166,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(50px)', pointerEvents: 'none' }}></div>
-      <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(60px)', pointerEvents: 'none' }}></div>
+  const metrics = [
+    { id: 1, icon: <Timer size={28} />, val: "99.2", suffix: "%", label: "System Uptime" },
+    { id: 2, icon: <Coffee size={28} />, val: "24/7", suffix: "", label: "Real-Time Support" },
+    { id: 3, icon: <TrendingUp size={28} />, val: "41", suffix: "%", label: "Average ROI Increase" },
+    { id: 4, icon: <MapPin size={28} />, val: "100", suffix: "+", label: "Active Locations" }
+  ];
 
-      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-        <div className="section-head reveal" style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.3)', borderRadius: '100px', marginBottom: '2rem', backdropFilter: 'blur(10px)' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)', display: 'block', animation: 'float 2s infinite alternate' }}></span>
-            <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: 900 }}>{t('services.subtitle')}</span>
+  const gains = [
+    { icon: <Activity size={24} />, title: "Lower Downtime", desc: "Proactive monitoring and predictive maintenance minimize disruptions." },
+    { icon: <Package size={24} />, title: "Inventory Accuracy", desc: "Smart forecasting and inventory control ensure the right stock, at the right time." },
+    { icon: <Network size={24} />, title: "Multi-Site Control", desc: "Centralized systems and real-time visibility across all your kiosque locations." },
+    { icon: <TrendingUp size={24} />, title: "Scalable Growth", desc: "Operational systems designed to scale with your business without complexity." }
+  ];
+
+  return (
+    <section id="services" className="services-premium-white">
+      <div className="container">
+        {/* Intro Section */}
+        <div className="services-hero-grid">
+          <div className="services-intro-left reveal">
+            <span className="ops-eyebrow">SERVICES</span>
+            <h1>What <span className="teal-text">We Do</span></h1>
+            <p className="intro-desc">Operational intelligence, logistics precision, and scalable execution.</p>
+            <p className="intro-sub">
+              OpFlux Solution manages and optimizes automated retail operations through structured systems, intelligent logistics, and real-world execution.
+            </p>
+            <a href="#" className="ops-cta-link shimmer-hover">
+              Explore Our Services <ArrowRight size={18} />
+            </a>
           </div>
-          <h2 className="reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, letterSpacing: '-2px', margin: '0 0 2rem 0', color: '#fff', textShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>{t('services.title')}</h2>
-          <div className="reveal" style={{ width: '100px', height: '5px', background: 'var(--accent-teal)', margin: '2rem auto 0', borderRadius: '3px', boxShadow: '0 0 20px rgba(20,184,166,0.4)', animation: 'float 4s ease-in-out infinite' }}></div>
+
+          <div className="services-stack-right reveal">
+            <div className="service-stack-card">
+              <div className="stack-icon-box"><Activity size={20} /></div>
+              <span className="stack-card-text">Operations Management</span>
+            </div>
+            <div className="service-stack-card">
+              <div className="stack-icon-box"><Truck size={20} /></div>
+              <span className="stack-card-text">Logistics & Supply Chain</span>
+            </div>
+            <div className="service-stack-card">
+              <div className="stack-icon-box"><Wrench size={20} /></div>
+              <span className="stack-card-text">Technical Maintenance</span>
+            </div>
+            <div className="service-stack-card">
+              <div className="stack-icon-box"><Users size={20} /></div>
+              <span className="stack-card-text">Business Consulting</span>
+            </div>
+          </div>
         </div>
 
-        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.8rem' }}>
-          {services.map((srv, idx) => {
-            const isHovered = hoveredCard === idx;
-            return (
-              <div 
-                key={srv.id}
-                onMouseEnter={() => setHoveredCard(idx)}
-                onMouseLeave={() => setHoveredCard(null)}
-                style={{
-                  position: 'relative', height: '400px', borderRadius: '32px', overflow: 'hidden',
-                  cursor: 'default', transition: 'all 0.5s ease',
-                  border: isHovered ? '1px solid rgba(20,184,166,0.5)' : '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: isHovered ? '0 30px 70px rgba(0,0,0,0.5)' : '0 10px 30px rgba(0,0,0,0.2)'
-                }}
-              >
-                <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-                  <img loading="lazy" src={srv.img} alt={srv.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: isHovered ? 'scale(1.1)' : 'scale(1)', filter: isHovered ? 'brightness(0.5) blur(1px)' : 'brightness(0.8)', transition: 'all 0.7s ease' }} />
+        {/* Main Services Grid & Sidebar */}
+        <div className="services-main-layout">
+          <div className="services-grid-left stagger-reveal">
+            {services.map((srv) => (
+              <div key={srv.id} className="service-split-card reveal">
+                <div className="service-card-info">
+                  <div className="card-num-box">
+                    <span className="card-number">{srv.id}</span>
+                    <div className="card-icon-min">{srv.icon}</div>
+                  </div>
+                  <h3>{srv.title}</h3>
+                  <p>{srv.desc}</p>
+                  <a href="#" className="learn-more-link">Learn More <ArrowRight size={16} /></a>
                 </div>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: isHovered ? '100%' : '110px', background: isHovered ? 'rgba(11,31,51,0.85)' : 'linear-gradient(to top, rgba(11,31,51,0.95) 0%, rgba(11,31,51,0.4) 100%)', backdropFilter: isHovered ? 'blur(15px)' : 'blur(5px)', transition: 'all 0.5s ease', zIndex: 2 }}></div>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%', zIndex: 3 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: isHovered ? '1.5rem' : '0', transition: 'all 0.5s ease' }}>
-                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(20,184,166,0.2)', border: '1px solid rgba(20,184,166,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}>{srv.icon}</div>
-                    <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>{srv.title}</h3>
-                  </div>
-                  <div style={{ maxHeight: isHovered ? '200px' : '0px', opacity: isHovered ? 1 : 0, transform: isHovered ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.5s ease', overflow: 'hidden' }}>
-                    <p style={{ margin: 0, color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', lineHeight: 1.5 }}>{srv.desc}</p>
-                  </div>
+                <div className="service-card-visual">
+                  <img src={srv.img} alt={srv.title} />
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          <div className="services-sidebar-right reveal">
+            {metrics.map((m) => (
+              <div key={m.id} className="sidebar-stat">
+                <div className="stat-icon-wrap">{m.icon}</div>
+                <div className="stat-val">
+                  <CountUp end={m.val} suffix={m.suffix} />
+                </div>
+                <div className="stat-label">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* What You Gain Strip */}
+        <div className="services-gain-strip reveal">
+          {gains.map((g, idx) => (
+            <div key={idx} className="gain-item">
+              <div className="gain-icon">{g.icon}</div>
+              <div className="gain-info">
+                <h4>{g.title}</h4>
+                <p>{g.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Philosophy Box */}
+        <div className="services-philosophy-box reveal">
+          <div className="phil-quote-wrap">
+            <div className="quote-circle"><MessageSquare size={32} /></div>
+            <div className="phil-text">
+              <h2>
+                We don't manage isolated processes. 
+                <span className="teal-text">We run complete operational systems.</span>
+              </h2>
+            </div>
+          </div>
+          <div className="phil-visual-right">
+            <p>
+              Every service is connected into one intelligent operating model built for scale, consistency, and control.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <a href="#" className="learn-more-link" style={{ margin: 0 }}>Discover How We Operate <ArrowRight size={16} /></a>
+              
+              {/* CSS Isometric Animation */}
+              <div className="isometric-graphic">
+                <div className="iso-layer"></div>
+                <div className="iso-layer"></div>
+                <div className="iso-layer"></div>
+                <div className="iso-cube"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+};
+
+const CountUp = ({ end, duration = 2000, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) observer.observe(countRef.current);
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    if (typeof end === 'string' && isNaN(parseFloat(end))) {
+      setCount(end);
+      return;
+    }
+
+    let start = 0;
+    const endVal = typeof end === 'number' ? end : parseFloat(end);
+    
+    const totalFrames = Math.round(duration / 16);
+    const increment = endVal / totalFrames;
+    let frame = 0;
+
+    const timer = setInterval(() => {
+      frame++;
+      start += increment;
+      if (frame >= totalFrames) {
+        setCount(endVal);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [hasStarted, end, duration]);
+
+  return (
+    <span ref={countRef}>
+      {typeof count === 'number' && !isNaN(count) ? 
+        (count % 1 === 0 ? count : count.toFixed(1)) : 
+        (count || end)}{suffix}
+    </span>
   );
 };
 
 export const HowOpflux = () => {
   const { t } = useTranslation();
-  const workflowProgressFillRef = useRef(null);
-  const workflowShellRef = useRef(null);
-  const workflowStepCardsRef = useRef([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!workflowShellRef.current || !workflowProgressFillRef.current) return;
-      
-      const rect = workflowShellRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const rawProgress = ((viewportHeight * 0.62) - rect.top) / Math.max(rect.height, 1);
-      const clampedProgress = Math.min(1, Math.max(0, rawProgress));
-      workflowProgressFillRef.current.style.height = `${(clampedProgress * 100).toFixed(2)}%`;
-
-      const focusLine = viewportHeight * (window.innerWidth <= 768 ? 0.35 : 0.5);
-      let nearestIndex = 0;
-      let nearestDistance = Number.POSITIVE_INFINITY;
-
-      workflowStepCardsRef.current.forEach((step, index) => {
-        if (!step) return;
-        const rect = step.getBoundingClientRect();
-        const cardCenter = rect.top + (rect.height / 2);
-        const distance = Math.abs(cardCenter - focusLine);
-
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestIndex = index;
-        }
-      });
-
-      workflowStepCardsRef.current.forEach((step, idx) => {
-        if (step) step.classList.toggle('active', idx === nearestIndex);
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
   return (
-    <section id="operations" className="bg-dark">
-      <div className="container">
-        <div className="section-head reveal">
-          <span className="subtitle">{t('ops.subtitle')}</span>
-          <h2>{t('ops.title')}</h2>
-        </div>
-        <div className="workflow-shell" id="workflow-shell" ref={workflowShellRef}>
-          <div className="workflow-progress-line" aria-hidden="true">
-            <span className="workflow-progress-fill" id="workflow-progress-fill" ref={workflowProgressFillRef}></span>
+    <div className="ops-premium-light">
+      {/* Section 1: Hero */}
+      <section className="ops-section ops-hero reveal">
+        <div className="container">
+          <div className="ops-hero-grid">
+            <div className="ops-hero-content stagger-reveal">
+              <span className="ops-eyebrow">Operations Management</span>
+              <h1 className="ops-hero-title">How OpFlux <span className="gradient-text">Operates</span></h1>
+              <p className="ops-hero-subtitle">
+                A seamless orchestration of intelligence, logistics, and technology to power every automated retail experience.
+              </p>
+              <a href="#workflow" className="ops-cta-link shimmer-hover">
+                See how it works <span className="ops-cta-icon"><Play size={14} fill="currentColor" /></span>
+              </a>
+            </div>
+            <div className="ops-ecosystem floating-nodes">
+              <div className="ops-eco-orbits"></div>
+              <div className="ops-eco-center pulse-glow">
+                <span style={{ fontWeight: 900, fontSize: '1.4rem', color: 'var(--text-primary)', fontFamily: 'Outfit' }}>OpFlux</span>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '0s' }}>
+                <div className="node-label left">01<br/>Forecast</div>
+                <div className="node-icon-box"><BarChart3 size={20} /></div>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '1.5s' }}>
+                <div className="node-label left">02<br/>Plan</div>
+                <div className="node-icon-box"><Package size={20} /></div>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '3s' }}>
+                <div className="node-label left">03<br/>Coordinate</div>
+                <div className="node-icon-box"><Truck size={20} /></div>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '4.5s' }}>
+                <div className="node-icon-box"><Activity size={20} /></div>
+                <div className="node-label right">04<br/>Monitor</div>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '6s' }}>
+                <div className="node-icon-box"><Wrench size={20} /></div>
+                <div className="node-label right">05<br/>Maintain</div>
+              </div>
+              <div className="ops-eco-node node-float" style={{ '--delay': '7.5s' }}>
+                <div className="node-icon-box"><Settings size={20} /></div>
+                <div className="node-label right">06<br/>Optimize</div>
+              </div>
+            </div>
           </div>
-          <div className="workflow-step-list" id="workflow-step-list">
-            {[1, 2, 3, 4, 5, 6].map((i, index) => (
-              <article 
-                key={i} 
-                className={`workflow-step-card ${i === 1 ? 'active' : ''}`}
-                ref={el => workflowStepCardsRef.current[index] = el}
-              >
-                <span className="workflow-step-dot" aria-hidden="true"></span>
-                <div className="workflow-step-content">
-                  <span className="workflow-step-number">{`0${i}`}</span>
-                  <h4 className="workflow-step-title teal">{t(`ops.o${i}.title`)}</h4>
-                  <p style={{ fontSize: '1rem', margin: 0 }}>{t(`ops.o${i}.desc`)}</p>
+        </div>
+      </section>
+
+      {/* Section 2: Workflow Cards */}
+      <section id="workflow" className="ops-section ops-workflow reveal">
+        <div className="container">
+          <div className="ops-connector-line animated-line">
+            {[1,2,3,4,5,6].map(i => <div key={i} className="ops-connector-dot"></div>)}
+          </div>
+          <div className="ops-cards-grid">
+            {[
+              { id: '01', title: 'Demand Forecasting', desc: 'Predicting consumer patterns to optimize machine placement and stocking frequency.', icon: <BarChart3 /> },
+              { id: '02', title: 'Inventory Planning', desc: 'Managing the life cycle of consumables to ensure zero stock-outs.', icon: <Package /> },
+              { id: '03', title: 'Logistics Coordination', desc: 'Streamlining the movement of goods from warehouse to kiosque.', icon: <Truck /> },
+              { id: '04', title: 'Real-Time Monitoring', desc: 'Cloud-based oversight of technical health and sales performance.', icon: <Activity /> },
+              { id: '05', title: 'Predictive Maintenance', desc: 'Engineers deployed before a failure occurs, based on system health data.', icon: <Wrench /> },
+              { id: '06', title: 'Continuous Optimization', desc: 'Analytic-driven refinement of every operational touchpoint.', icon: <Settings /> }
+            ].map((card, idx) => (
+              <div key={card.id} className="ops-card reveal" style={{ transitionDelay: `${idx * 0.1}s` }}>
+                <div className="ops-card-header">
+                  <div className="ops-card-icon">{card.icon}</div>
+                  <div className="ops-card-num">{card.id}</div>
                 </div>
-              </article>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+                <div className="ops-card-arrow"><ArrowRight size={20} /></div>
+              </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Section 3: Metrics */}
+      <section className="ops-section reveal" style={{ paddingTop: '2rem' }}>
+        <div className="container">
+          <div className="ops-metrics-panel counter-reveal">
+            <div className="ops-metric-item">
+              <div className="ops-metric-icon"><Timer size={24} /></div>
+              <div className="ops-metric-val"><CountUp end={99.2} suffix="%" /></div>
+              <div className="ops-metric-label">System Uptime</div>
+            </div>
+            <div className="ops-metric-item">
+              <div className="ops-metric-icon"><TrendingUp size={24} /></div>
+              <div className="ops-metric-val"><CountUp end={32} suffix="%" /></div>
+              <div className="ops-metric-label">Reduction in Downtime</div>
+            </div>
+            <div className="ops-metric-item">
+              <div className="ops-metric-icon"><Activity size={24} /></div>
+              <div className="ops-metric-val"><CountUp end={41} suffix="%" /></div>
+              <div className="ops-metric-label">Increase in Asset ROI</div>
+            </div>
+            <div className="ops-metric-item">
+              <div className="ops-metric-icon"><ShieldCheck size={24} /></div>
+              <div className="ops-metric-val"><CountUp end="24/7" /></div>
+              <div className="ops-metric-label">Real-Time Monitoring</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Philosophy */}
+      <section className="ops-section reveal" style={{ paddingTop: '2rem' }}>
+        <div className="container">
+          <div className="ops-philosophy-split">
+            <div className="ops-phil-left reveal">
+              <div className="ops-phil-quote-icon"><MessageSquare size={48} /></div>
+              <div style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', marginBottom: '1.5rem' }}>Operational Philosophy</div>
+              <div className="ops-phil-quote">"Operations is not a cost center; it’s a value engine."</div>
+            </div>
+            <div className="ops-phil-right reveal" style={{ transitionDelay: '0.2s' }}>
+              <p>We believe automation is only as strong as its weakest link — usually the friction between digital and physical systems.</p>
+              <p>We apply Lean Engineering and Integrated Logistics to eliminate that friction.</p>
+              <p>We manage the quiet machinery that makes the loud machinery work.</p>
+              <div className="ops-phil-cube-container">
+                <div className="ops-phil-cube-platform"></div>
+                <div className="ops-phil-cube floating-cube shimmer-glow"></div>
+                <div className="ops-phil-cube-ghost"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
-export const OperationalPhilosophy = () => {
-  const { t } = useTranslation();
-  return (
-    <section className="bg-navy">
-      <div className="container">
-        <div className="section-head reveal">
-          <h2>{t('philosophy.title')}</h2>
-        </div>
-        <div className="reveal" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div className="glass-card text-center philosophy-quote-card" style={{ marginBottom: '3rem', background: "linear-gradient(135deg, rgba(11,31,51,0.6), rgba(8,18,35,0.8)), url('data:image/svg+xml,%3Csvg width=\\'20\\' height=\\'20\\' viewBox=\\'0 0 20 20\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'%232ec4b6\\' fill-opacity=\\'0.05\\' fill-rule=\\'evenodd\\'%3E%3Ccircle cx=\\'3\\' cy=\\'3\\' r=\\'3\\'/%3E%3Ccircle cx=\\'13\\' cy=\\'13\\' r=\\'3\\'/%3E%3C/g%3E%3C/svg%3E')", padding: 'clamp(2rem, 5vw, 4rem)', border: '1px solid rgba(46,196,182,0.2)', boxShadow: '0 0 40px rgba(46,196,182,0.1)' }}>
-            <h3 style={{ margin: 0, color: '#fff', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 700, textShadow: '0 0 30px rgba(46,196,182,0.4)', lineHeight: 1.2 }}>{t('philosophy.quote')}</h3>
-          </div>
-          <div style={{ width: '100px', height: '3px', background: 'var(--accent-teal)', margin: '0 auto 3rem', borderRadius: '2px', boxShadow: '0 0 10px rgba(46,196,182,0.5)' }}></div>
-          <div className="grid-2">
-            <div className="glass-card" style={{ background: 'rgba(0,0,0,0.3)' }}>
-              <div style={{ marginBottom: '1rem' }}><Link2 size={32} className="teal" /></div>
-              <p style={{ fontSize: '1.15rem', color: '#fff', margin: 0, lineHeight: 1.6 }}>{t('philosophy.d1')}</p>
-            </div>
-            <div className="glass-card" style={{ background: 'rgba(0,0,0,0.3)' }}>
-              <div style={{ marginBottom: '1rem' }}><Wrench size={32} className="teal" /></div>
-              <p style={{ fontSize: '1.15rem', color: '#fff', margin: 0, lineHeight: 1.6 }}>{t('philosophy.d2')}</p>
-            </div>
-          </div>
-          <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-            <div style={{ display: 'inline-block', padding: '1.5rem 3rem', background: 'rgba(46,196,182,0.1)', borderRadius: '50px', border: '1px solid rgba(46,196,182,0.2)' }}>
-              <h4 className="teal" style={{ fontStyle: 'italic', margin: 0, fontSize: '1.3rem' }}>{t('philosophy.footer')}</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+export const OperationalPhilosophy = () => null;
 
-export const OperationalImpacts = () => {
-  const { t } = useTranslation();
-  return (
-    <section className="bg-navy">
-      <div className="container">
-        <div className="section-head reveal">
-          <h2>{t('impact.title')}</h2>
-          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.03)', padding: '1rem 2rem', borderRadius: '50px' }}>
-            <p style={{ margin: 0, color: '#fff' }}>{t('impact.desc')}</p>
-          </div>
-        </div>
-        <div className="grid-4 reveal">
-          <div className="glass-card text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '150px' }}>
-            <h4 style={{ margin: 0, fontSize: '1.1rem' }}>{t('impact.i1')}</h4>
-          </div>
-          <div className="glass-card text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '150px' }}>
-            <h4 style={{ margin: 0, fontSize: '1.1rem' }}>{t('impact.i2')}</h4>
-          </div>
-          <div className="glass-card text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '150px' }}>
-            <h4 style={{ margin: 0, fontSize: '1.1rem' }}>{t('impact.i3')}</h4>
-          </div>
-          <div className="glass-card text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '150px' }}>
-            <h4 style={{ margin: 0, fontSize: '1.1rem' }}>{t('impact.i4')}</h4>
-          </div>
-        </div>
-        <div className="text-center reveal" style={{ marginTop: '4rem' }}>
-          <h4 className="teal" style={{ fontSize: '1.5rem' }}>{t('impact.footer')}</h4>
-        </div>
-      </div>
-    </section>
-  );
-};
+export const OperationalImpacts = () => null;
 
 export const SuccessStory = () => {
   const { t } = useTranslation();
@@ -899,35 +1112,109 @@ export const SuccessStory = () => {
 export const Logistics = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-navy supply-redesign">
+    <div className="logistics-premium">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="subtitle">{t('supply.subtitle')}</span>
-          <h2>{t('supply.title')}</h2>
-          <div style={{ width: '100%', maxWidth: '650px', margin: '0 auto' }}>
-            <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)' }}>
-              <span>{t('supply.desc1')}</span> 
-              <span style={{ color: '#fff', fontWeight: 500 }}>{t('supply.desc2')}</span>
+        {/* Top Hero Section */}
+        <div className="logistics-hero-grid">
+          <div className="logistics-content reveal">
+            <span className="ops-eyebrow">Logistics</span>
+            <h1>
+              <span>Consumables</span>
+              <span className="gradient-text">Supply Chain</span>
+            </h1>
+            <p className="logistics-subtext">
+              Managing coffee, food, or retail consumables is a high-stakes logistics game. If the machine is empty, the business is closed.
             </p>
           </div>
-          <div className="supply-head-strip">
-            <figure className="supply-head-thumb">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80&fm=webp" alt="Warehouse" width="900" height="600" />
-            </figure>
+
+          <div className="logistics-illustration reveal" style={{ transitionDelay: '0.2s' }}>
+            <img src="/images/logistics-hero.png" alt="OpFlux Warehouse and Truck" className="logistics-hero-img" />
+            <div className="map-pin" style={{ top: '15%', left: '30%', '--delay': '0s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
+            <div className="map-pin" style={{ bottom: '25%', right: '15%', '--delay': '1s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
+            <svg className="logistic-paths" width="100%" height="100%" style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+              <path d="M100,300 Q250,200 400,100" fill="none" stroke="rgba(20, 184, 166, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
+              <path d="M400,100 Q350,250 150,350" fill="none" stroke="rgba(20, 184, 166, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
+            </svg>
+          </div>
+
+          <div className="logistics-side-cards stagger-reveal">
+            <div className="logistics-pill reveal">
+              <div className="logistics-pill-icon"><Box size={24} /></div>
+              <div className="logistics-pill-info">
+                <h4>Zero</h4>
+                <span>Stock-outs</span>
+              </div>
+            </div>
+            <div className="logistics-pill reveal" style={{ transitionDelay: '0.1s' }}>
+              <div className="logistics-pill-icon"><Timer size={24} /></div>
+              <div className="logistics-pill-info">
+                <h4>99.2%</h4>
+                <span>On-time Delivery</span>
+              </div>
+            </div>
+            <div className="logistics-pill reveal" style={{ transitionDelay: '0.2s' }}>
+              <div className="logistics-pill-icon"><TrendingUp size={24} /></div>
+              <div className="logistics-pill-info">
+                <h4>100%</h4>
+                <span>Inventory Visibility</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="supply-grid">
-          <div className="supply-content-col">
-            <div className="supply-cards-grid">
-              <article className="glass-card supply-card reveal">
-                <div className="supply-card-icon"><Package size={24} /></div>
-                <h4 className="teal">{t('supply.s1.title')}</h4>
-                <p>{t('supply.s1.desc')}</p>
-              </article>
+
+        {/* Bottom Management Panel */}
+        <div className="management-panel reveal">
+          {/* Orchestrator Road & Truck Animation */}
+          <div className="orchestrator-track">
+            <div className="orchestrator-road"></div>
+            <div className="truck-orchestrator">
+              <div className="orchestrator-truck">
+                <div className="truck-cabin">
+                  <div className="truck-headlight"></div>
+                </div>
+                <div className="truck-trailer">
+                  <div className="trailer-stripe"></div>
+                  <div className="trailer-logo">OpFlux</div>
+                </div>
+                <div className="truck-wheel w1"></div>
+                <div className="truck-wheel w2"></div>
+                <div className="truck-wheel w3"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="management-header">
+            <div className="m-head-left">
+              <h4 style={{ color: 'var(--accent-teal)', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', fontWeight: 800, marginBottom: '1rem' }}>What We Manage</h4>
+              <h2>End-to-End Orchestration</h2>
+            </div>
+            <p>Procurement, warehousing, and "Last-Foot" delivery to the kiosque.</p>
+          </div>
+
+          <div className="management-features stagger-reveal">
+            <div className="feature-col">
+              <div className="feature-icon"><Box size={28} /></div>
+              <h4>Procurement</h4>
+              <p>Sourcing high-quality consumables from trusted suppliers.</p>
+            </div>
+            <div className="feature-col">
+              <div className="feature-icon"><LayoutGrid size={28} /></div>
+              <h4>Warehousing</h4>
+              <p>Smart inventory storage with temperature and batch control.</p>
+            </div>
+            <div className="feature-col">
+              <div className="feature-icon"><Truck size={28} /></div>
+              <h4>Last-Foot Delivery</h4>
+              <p>Route-optimized delivery to kiosques at the right time.</p>
+            </div>
+            <div className="feature-col">
+              <div className="feature-icon"><Globe size={28} /></div>
+              <h4>Inventory Visibility</h4>
+              <p>Real-time tracking of stock levels across all locations and machines.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

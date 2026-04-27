@@ -181,7 +181,7 @@ function App() {
     <LanguageProvider>
       <Router>
         <ScrollToTop />
-        <Suspense fallback={<div className="loader-overlay" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#050b14', zIndex: 9999, height: '100vh', width: '100vw' }}><div className="loader-bar" style={{ width: '200px' }}></div></div>}>
+        <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Layout><Home /></Layout>} />
             <Route path="/about" element={<Layout><AboutPage /></Layout>} />
