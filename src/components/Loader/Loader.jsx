@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Loader.css';
-import logo from '../../assets/logo.PNG';
+import logo from '../../assets/logo.png';
 
 const Loader = () => {
   const [showText, setShowText] = useState(false);
