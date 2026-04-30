@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from './LanguageContext';
 
+import logo from '../assets/logo.png';
+
 const Navbar = () => {
   const { lang, setLang, t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
@@ -29,11 +31,20 @@ const Navbar = () => {
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
       <div className="container nav-container">
-        <Link to="/" className="brand-logo" onClick={handleHomeClick}>
-          <div className="logo-container">
-            <span className="logo-inner-bracket"></span>
-            <span className="logo-text">Op<span className="logo-accent">Flux</span></span>
-          </div>
+        <Link to="/" className="brand-logo" onClick={handleHomeClick} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', textDecoration: 'none' }}>
+          <img src={logo} alt="OpFlux Logo" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+          <span style={{ 
+            fontSize: '10px', 
+            fontWeight: '900', 
+            color: '#1f4e5f', 
+            textTransform: 'uppercase',
+            letterSpacing: '0.2px',
+            fontFamily: "'Outfit', sans-serif",
+            lineHeight: '1',
+            textAlign: 'center'
+          }}>
+            Opfluxsolution
+          </span>
         </Link>
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`} id="primary-nav">
           <NavLink to="/" onClick={handleHomeClick} className={({ isActive }) => isActive ? 'active' : ''}>{t('nav.home')}</NavLink>

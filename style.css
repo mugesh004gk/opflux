@@ -2620,10 +2620,10 @@ img {
    ========================================= */
 
 /* All headings in sections must be dark readable blue */
-section:not(.hero) h1,
-section:not(.hero) h2,
-section:not(.hero) h3,
-section:not(.hero) h4 {
+section:not(.hero):not(.strategy-section):not(.impact-section) h1,
+section:not(.hero):not(.strategy-section):not(.impact-section) h2,
+section:not(.hero):not(.strategy-section):not(.impact-section) h3,
+section:not(.hero):not(.strategy-section):not(.impact-section) h4 {
   color: var(--text-primary) !important;
   -webkit-text-fill-color: var(--text-primary) !important; /* Force over gradients if necessary */
   background: none !important;

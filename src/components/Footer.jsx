@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from './LanguageContext';
 
+import logo from '../assets/logo.png';
+
 const Footer = () => {
   const { t } = useTranslation();
 
@@ -10,11 +12,19 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <Link to="/" className="brand-logo">
-              <div className="logo-container">
-                <span className="logo-inner-bracket"></span>
-                <span className="logo-text">Op<span className="logo-accent">Flux</span></span>
-              </div>
+            <Link to="/" className="brand-logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '4px', textDecoration: 'none' }}>
+              <img src={logo} alt="OpFlux Logo" style={{ height: '45px', width: 'auto', objectFit: 'contain' }} />
+              <span style={{ 
+                fontSize: '11px', 
+                fontWeight: '900', 
+                color: '#1f4e5f', 
+                textTransform: 'uppercase',
+                letterSpacing: '0.2px',
+                fontFamily: "'Outfit', sans-serif",
+                lineHeight: '1'
+              }}>
+                Opfluxsolution
+              </span>
             </Link>
             <p style={{ marginTop: '1.5rem', color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '250px' }}>
               {t('footer.tagline')}

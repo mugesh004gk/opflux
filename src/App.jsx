@@ -1,9 +1,10 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './components/LanguageContext';
+import Loader from './components/Loader/Loader';
 
 const SEO = ({ title, description }) => {
   const location = useLocation();
@@ -177,6 +178,21 @@ const ContactPage = () => (
 );
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Show loader for 3.5 seconds (2s spin + 1s fade-in + cushion)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <LanguageProvider>
       <Router>

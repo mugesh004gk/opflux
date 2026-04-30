@@ -151,7 +151,7 @@ export const WhyOpflux = () => {
             </p>
             
             <div className="premium-quote-card" style={{ padding: '2.5rem', background: 'var(--bg-tertiary)', borderLeft: '4px solid var(--accent-teal)', borderRadius: '0 24px 24px 24px', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', animation: 'float 8s ease-in-out infinite alternate' }}>
-              <div style={{ position: 'absolute', top: '-18px', left: '20px', background: 'var(--accent-teal)', color: '#fff', padding: '0.6rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 5px 15px rgba(20,184,166,0.3)' }}>
+              <div style={{ position: 'absolute', top: '-18px', left: '20px', background: 'var(--accent-teal)', color: '#fff', padding: '0.6rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 5px 15px rgba(31, 78, 95,0.3)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25-.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
               </div>
               <p style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: 0, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.6 }}>
@@ -163,7 +163,7 @@ export const WhyOpflux = () => {
           <div className="why-visual-premium" style={{ position: 'relative', perspective: '1000px' }}>
             <div className="image-stack" style={{ position: 'relative', height: '550px', width: '100%', transformStyle: 'preserve-3d' }}>
               {/* Decorative Background Blob */}
-              <div style={{ position: 'absolute', top: '10%', right: '0%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(20,184,166,0.2) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(40px)', zIndex: 0, animation: 'float 10s infinite alternate' }}></div>
+              <div style={{ position: 'absolute', top: '10%', right: '0%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(31, 78, 95,0.2) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(40px)', zIndex: 0, animation: 'float 10s infinite alternate' }}></div>
               
               {/* Main Image */}
               <div style={{ position: 'absolute', top: 0, right: 0, width: '85%', height: '85%', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.15)', zIndex: 1, border: '1px solid rgba(0,0,0,0.05)', animation: 'float 7s ease-in-out infinite' }}>
@@ -177,7 +177,7 @@ export const WhyOpflux = () => {
               
               {/* Floating Metric Card */}
               <div className="floating-metric glass" style={{ position: 'absolute', top: '25%', left: '0%', padding: '1.2rem 1.5rem', borderRadius: '16px', zIndex: 3, display: 'flex', alignItems: 'center', gap: '1.2rem', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(15px)', boxShadow: '0 15px 35px rgba(0,0,0,0.1)', animation: 'float 6s ease-in-out infinite alternate' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--accent-teal)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 5px 15px rgba(20,184,166,0.3)' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--accent-teal)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 5px 15px rgba(31, 78, 95,0.3)' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 </div>
                 <div>
@@ -274,7 +274,7 @@ export const Foundation = () => {
     <section className="bg-navy" style={{ padding: '6rem 0', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div className="section-head reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '50px', marginBottom: '1.2rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 1.4rem', background: 'rgba(31, 78, 95,0.1)', border: '1px solid rgba(31, 78, 95,0.2)', borderRadius: '50px', marginBottom: '1.2rem' }}>
             <Layers size={18} className="teal" />
             <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800 }}>{t('pillars.subtitle')}</span>
           </div>
@@ -308,7 +308,7 @@ export const Foundation = () => {
               }}
               onMouseOver={(e) => { 
                 e.currentTarget.style.transform = 'translateY(-8px)'; 
-                e.currentTarget.style.borderColor = 'rgba(20,184,166,0.4)';
+                e.currentTarget.style.borderColor = 'rgba(31, 78, 95,0.4)';
                 e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
               }}
               onMouseOut={(e) => { 
@@ -318,7 +318,7 @@ export const Foundation = () => {
               }}
             >
               <div style={{ position: 'absolute', top: '1.2rem', right: '1.5rem', fontSize: '2.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.03)', pointerEvents: 'none' }}>{pillar.id}</div>
-              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'linear-gradient(135deg, rgba(20,184,166,0.1), rgba(14,165,233,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(20,184,166,0.2)' }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'linear-gradient(135deg, rgba(31, 78, 95,0.1), rgba(58, 124, 140,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(31, 78, 95,0.2)' }}>
                 {pillar.icon}
               </div>
               <div>
@@ -327,7 +327,7 @@ export const Foundation = () => {
               </div>
             </div>
           ))}
-          <div className="reveal" style={{ background: 'linear-gradient(135deg, var(--accent-teal), #0EA5E9)', borderRadius: '28px', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1.2rem', color: '#fff', textAlign: 'center', boxShadow: '0 15px 30px rgba(20,184,166,0.15)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}>
+          <div className="reveal" style={{ background: 'linear-gradient(135deg, var(--accent-teal), #3A7C8C)', borderRadius: '28px', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1.2rem', color: '#fff', textAlign: 'center', boxShadow: '0 15px 30px rgba(31, 78, 95,0.15)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}>
             <Hexagon size={40} />
             <h4 style={{ fontSize: '1.35rem', fontWeight: 900, margin: 0 }}>Driven by Purpose</h4>
             <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.9)', margin: 0 }}>Join the mission to redefine automated retail.</p>
@@ -354,8 +354,8 @@ export const Clients = () => {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
           {clients.map((client, i) => (
-            <div key={i} className="reveal glass-card" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.borderColor = 'rgba(20,184,166,0.3)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}>
-               <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', marginBottom: '1rem' }}><Globe size={32} /></div>
+            <div key={i} className="reveal glass-card" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.4s ease' }} onMouseOver={(e) => { e.currentTarget.style.borderColor = 'rgba(31, 78, 95,0.3)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}>
+               <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(31, 78, 95,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', marginBottom: '1rem' }}><Globe size={32} /></div>
                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', margin: 0 }}>{client.name}</h3>
                <div style={{ height: '1px', width: '40px', background: 'var(--accent-teal)', opacity: 0.5 }}></div>
                <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.5)', margin: 0, textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700 }}>{client.type}</p>
@@ -372,11 +372,11 @@ export const OurExpertise = () => {
   return (
     <section className="bg-dark expertise-section-dark" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
       {/* Decorative Elements */}
-      <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(20,184,166,0.03) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(31, 78, 95,0.03) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
       
       <div className="container">
         <div className="section-head reveal" style={{ marginBottom: '5rem' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', padding: '0.6rem 1.4rem', background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '50px', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', padding: '0.6rem 1.4rem', background: 'rgba(31, 78, 95,0.1)', border: '1px solid rgba(31, 78, 95,0.2)', borderRadius: '50px', marginBottom: '1.5rem' }}>
              <Cpu size={18} className="teal" />
              <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800 }}>Intelligence Reservoir</span>
           </div>
@@ -385,11 +385,11 @@ export const OurExpertise = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '1.5rem' }}>
           {/* Card 1: Founder Experience */}
-          <div className="reveal" style={{ gridColumn: 'span 7', background: 'linear-gradient(135deg, rgba(11, 31, 51, 0.9), rgba(8, 18, 35, 0.95))', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '32px', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
-             <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(20,184,166,0.03)', fontWeight: 900, fontSize: '6rem', pointerEvents: 'none' }}><Activity /></div>
+          <div className="reveal" style={{ gridColumn: 'span 7', background: 'linear-gradient(135deg, rgba(11, 31, 51, 0.9), rgba(8, 18, 35, 0.95))', border: '1px solid rgba(31, 78, 95,0.2)', borderRadius: '32px', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
+             <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(31, 78, 95,0.03)', fontWeight: 900, fontSize: '6rem', pointerEvents: 'none' }}><Activity /></div>
              <div style={{ position: 'relative', zIndex: 2 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-                   <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(20,184,166,0.3)' }}><Users size={28} /></div>
+                   <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(31, 78, 95,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(31, 78, 95,0.3)' }}><Users size={28} /></div>
                    <h3 style={{ fontSize: '2rem', fontWeight: 800, color: '#fff', margin: 0 }}>{t('expertise.e1.title')}</h3>
                 </div>
                 <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem' }}>{t('expertise.e1.d1')}</p>
@@ -411,7 +411,7 @@ export const OurExpertise = () => {
              <div style={{ flex: 1, padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '20px', border: '1px dashed rgba(255,255,255,0.1)' }}>
                 <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>{t('expertise.e2.d2')}</p>
              </div>
-             <div style={{ background: 'rgba(20,184,166,0.1)', padding: '1.2rem', borderRadius: '100px', textAlign: 'center', border: '1px solid rgba(20,184,166,0.2)' }}>
+             <div style={{ background: 'rgba(31, 78, 95,0.1)', padding: '1.2rem', borderRadius: '100px', textAlign: 'center', border: '1px solid rgba(31, 78, 95,0.2)' }}>
                 <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', letterSpacing: '1px' }}>{t('expertise.e2.footer')}</span>
              </div>
           </div>
@@ -499,7 +499,7 @@ export const ContactSection = () => {
 
               <div className="meeting-card-premium reveal">
                 <div className="meeting-card-left">
-                  <div className="info-card-icon" style={{ background: 'rgba(14, 165, 233, 0.05)', color: '#0EA5E9' }}><Calendar size={24} /></div>
+                  <div className="info-card-icon" style={{ background: 'rgba(58, 124, 140, 0.05)', color: '#3A7C8C' }}><Calendar size={24} /></div>
                   <div className="meeting-card-text">
                     <h4>Prefer a Meeting?</h4>
                     <p>Schedule a free consultation with our experts</p>
@@ -1132,8 +1132,8 @@ export const Logistics = () => {
             <div className="map-pin" style={{ top: '15%', left: '30%', '--delay': '0s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
             <div className="map-pin" style={{ bottom: '25%', right: '15%', '--delay': '1s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
             <svg className="logistic-paths" width="100%" height="100%" style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-              <path d="M100,300 Q250,200 400,100" fill="none" stroke="rgba(20, 184, 166, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
-              <path d="M400,100 Q350,250 150,350" fill="none" stroke="rgba(20, 184, 166, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
+              <path d="M100,300 Q250,200 400,100" fill="none" stroke="rgba(31, 78, 95, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
+              <path d="M400,100 Q350,250 150,350" fill="none" stroke="rgba(31, 78, 95, 0.2)" strokeWidth="2" strokeDasharray="5,5" />
             </svg>
           </div>
 
