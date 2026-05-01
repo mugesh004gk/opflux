@@ -110,8 +110,6 @@ const Layout = ({ children }) => {
 
 const Home = () => (
   <>
-    {/* DEPLOYMENT TEST BANNER - REMOVE AFTER VERIFICATION */}
-    <h1 style={{ color: "red", textAlign: "center", margin: "2rem 0" }}>DEPLOYMENT TEST SUCCESS</h1>
     <SEO 
       title="OpFlux Solution | Automated Retail Operations & Supply Chain Experts" 
       description="OpFlux Solution delivers engineering-driven operations, robotic kiosques, supply chain precision, logistics control, business intelligence, and automated retail systems." 

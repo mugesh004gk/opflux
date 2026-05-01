@@ -9,67 +9,231 @@ import {
   Users, MessageSquare, Calendar, ArrowRight, MousePointer2, Coffee, Phone, Play, MapPin
 } from 'lucide-react';
 
+import heroMain from '../assets/hero-main.png';
+import hologramArm from '../assets/hologram-arm.png';
+
 export const Hero = () => {
   const { t } = useTranslation();
-  
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const heroRight = document.querySelector('.hero-right-panel');
-      const heroGrid = document.querySelector('.hero-grid-bg');
-      if (window.innerWidth > 1024 && heroRight && heroGrid) {
-        const x = (window.innerWidth / 2 - e.pageX) / 50;
-        const y = (window.innerHeight / 2 - e.pageY) / 50;
-        heroRight.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
-    <section className="hero">
-      <video autoPlay muted loop playsInline preload="none" poster="/hero-bg.webp" className="hero-vid-bg" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
+    <section className="hero opx-hero-premium">
+      {/* 1. Background Video Layer (z-index: -2) */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="opx-hero-video"
+      >
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
-      <div className="hero-overlay"></div>
-      <div className="hero-grid-bg"></div>
-      <div className="hero-split">
-        <div className="hero-left-panel">
-          <div className="system-online-badge reveal">
-            <span className="badge-dot"></span>
-            <span>SYSTEM ONLINE</span>
+
+      {/* 2. Gradient Overlay Layer (z-index: -1) */}
+      <div className="opx-hero-overlay" aria-hidden="true"></div>
+
+      {/* 3. Content Layer */}
+      <div className="opx-hero-container">
+        <div className="opx-hero-inner">
+          {/* Left Side: Text Content */}
+          <div className="opx-hero-content-left reveal">
+            <div className="opx-hero-badge">
+              <span className="opx-hero-badge-dot"></span>
+              <span>{String(t('hero.kicker')).toUpperCase()}</span>
+            </div>
+
+            <h1 className="opx-hero-title">
+              {t('hero.headline1')} {t('hero.headline2')} <br />
+              {t('hero.headline3Lead')} <span>{t('hero.headline3Accent')}</span>
+            </h1>
+
+            <p className="opx-hero-description">{t('hero.summary')}</p>
+
+            <div className="opx-hero-actions">
+              <a href="#contact" className="opx-btn-primary">
+                {t('hero.btnContact')}
+              </a>
+              <a href="#operations" className="opx-btn-secondary">
+                {t('hero.btnExplore')}
+                <ArrowRight size={20} />
+              </a>
+            </div>
+
+            </div>
           </div>
-          <h1 className="reveal hero-h1">{t('hero.title')}</h1>
-          <p className="reveal hero-desc">{t('hero.descBlock2')}</p>
-          <div className="hero-btns reveal">
-            <a href="#contact" className="cta-btn grow-hover">{t('hero.btnContact')}</a>
-            <a href="#operations" className="cta-btn outline grow-hover">{t('hero.btnExplore')}</a>
-          </div>
-          <div className="reveal hero-quote-bar">
-            <p>{t('hero.descBlock1')}</p>
-          </div>
+
+
+          {/* Right Side: Visual Section */}
+          <div className="opx-hero-visual-right" style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center', // Floating in center
+            pointerEvents: 'none',
+            zIndex: 1
+          }}>
+            <div className="opx-robot-container" style={{
+              position: 'relative',
+              height: '80%', // Not full height to allow floating
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              animation: 'opxFloatRobot 6s ease-in-out infinite'
+            }}>
+              {/* Main Robot Image with Bottom Fade */}
+              <img
+                src={heroMain}
+                alt="Opflux Robot"
+                className="opx-robot-image"
+                loading="eager"
+                style={{
+                  height: '100%',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  objectPosition: 'right center',
+                  filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.15))',
+                  pointerEvents: 'auto',
+                  // Bottom Fade Mask
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                  maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+                }}
+              />
+
+              {/* Hologram Section - Precision Palm Alignment (Inner Hand) */}
+              <div className="opx-hologram-machine-wrap" style={{
+                position: 'absolute',
+                top: '56%', // Moved further up
+                right: '20%', // Moved further left
+                transform: 'translate(-50%, -50%)',
+                width: '200px',
+                zIndex: 5,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                pointerEvents: 'none',
+                animation: 'opxFloatHolo 4s ease-in-out infinite'
+              }}>
+                 {/* 3D Hologram Image */}
+                 <div style={{ width: '100%', perspective: '1000px', marginBottom: '-20px' }}>
+                    <img
+                      src={hologramArm}
+                      alt="Hologram Interface"
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        filter: 'drop-shadow(0 0 25px #6FB3C8)',
+                        opacity: 0.9,
+                        transform: 'rotateX(5deg)'
+                      }}
+                    />
+                 </div>
+
+                 {/* Glowing Base Rings (Exact match to screenshot) */}
+                 <div style={{
+                   width: '120px',
+                   height: '20px',
+                   background: 'radial-gradient(circle, rgba(111, 179, 200, 0.6) 0%, transparent 70%)',
+                   borderRadius: '50%',
+                   position: 'relative',
+                   marginTop: '-10px',
+                   boxShadow: '0 0 20px rgba(111, 179, 200, 0.4)'
+                 }}>
+                   <div style={{
+                     position: 'absolute',
+                     inset: '-10px',
+                     border: '2px solid rgba(111, 179, 200, 0.3)',
+                     borderRadius: '50%',
+                     animation: 'opxPulseRing 2s infinite'
+                   }}></div>
+                 </div>
+              </div>
+
+              {/* Styles for animations */}
+              <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes opxFloatRobot {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-15px); }
+                }
+                @keyframes opxFloatHolo {
+                  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+                  50% { transform: translate(-50%, -50%) translateY(-8px); }
+                }
+                @keyframes opxPulseRing {
+                  0% { transform: scale(0.8); opacity: 0.8; }
+                  100% { transform: scale(1.4); opacity: 0; }
+                }
+              `}} />
+
+
+              <div className="opx-robot-glow-back"></div>
+            </div>
         </div>
-        <div className="hero-right-panel reveal">
-          <div className="tech-ring ring-1"><div className="data-node"></div></div>
-          <div className="tech-ring ring-2"><div className="data-node reverse-pos"></div></div>
-          <div className="machine-aura"></div>
-          <div className="animated-machine">
-            <div className="vertical-scanner-line"></div>
-            <div className="machine-mask">
-              <img loading="lazy" src="/machine-core.webp" alt="OpFlux automated retail operations" className="machine-img" width="1000" height="1200" />
-            </div>
-            <div className="floating-hero-card fhc-right">
-              <h4 className="fhc-value">100%</h4>
-              <p className="fhc-label">Precision</p>
-            </div>
-            <div className="floating-hero-card fhc-left">
-              <h4 className="fhc-value">Zero</h4>
-              <p className="fhc-label">Stock-Outs</p>
-            </div>
-          </div>
+      </div>
+
+      {/* Full-width Stats Strip at the absolute bottom (Exact Match to Reference) */}
+      <div className="opx-hero-stats-strip-bottom" style={{
+        position: 'absolute',
+        bottom: '0',
+        left: '0',
+        width: '100%',
+        background: 'rgba(255, 255, 255, 0.85)',
+        backdropFilter: 'blur(15px)',
+        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
+        zIndex: 20,
+        padding: '1.25rem 5%',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          maxWidth: '1440px',
+          gap: '2rem'
+        }}>
+           <div className="opx-stat-item" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+              <Cpu size={32} strokeWidth={1.5} color="#1F4E5F" />
+              <div>
+                <strong style={{ display: 'block', color: '#1F4E5F', fontSize: '1rem', whiteSpace: 'nowrap' }}>Precision Engineering</strong>
+                <span style={{ fontSize: '0.85rem', color: '#64748B' }}>Built for Accuracy</span>
+              </div>
+              <div style={{ marginLeft: 'auto', width: '1px', height: '40px', background: 'rgba(0,0,0,0.08)' }}></div>
+           </div>
+           
+           <div className="opx-stat-item" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+              <Settings size={32} strokeWidth={1.5} color="#1F4E5F" />
+              <div>
+                <strong style={{ display: 'block', color: '#1F4E5F', fontSize: '1rem', whiteSpace: 'nowrap' }}>Intelligent Automation</strong>
+                <span style={{ fontSize: '0.85rem', color: '#64748B' }}>Smarter Operations</span>
+              </div>
+              <div style={{ marginLeft: 'auto', width: '1px', height: '40px', background: 'rgba(0,0,0,0.08)' }}></div>
+           </div>
+
+           <div className="opx-stat-item" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+              <TrendingUp size={32} strokeWidth={1.5} color="#1F4E5F" />
+              <div>
+                <strong style={{ display: 'block', color: '#1F4E5F', fontSize: '1rem', whiteSpace: 'nowrap' }}>Real-time Intelligence</strong>
+                <span style={{ fontSize: '0.85rem', color: '#64748B' }}>Data that Drives</span>
+              </div>
+              <div style={{ marginLeft: 'auto', width: '1px', height: '40px', background: 'rgba(0,0,0,0.08)' }}></div>
+           </div>
+
+           <div className="opx-stat-item" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+              <Globe size={32} strokeWidth={1.5} color="#1F4E5F" />
+              <div>
+                <strong style={{ display: 'block', color: '#1F4E5F', fontSize: '1rem', whiteSpace: 'nowrap' }}>Multi-Industry Solutions</strong>
+                <span style={{ fontSize: '0.85rem', color: '#64748B' }}>Scalable. Reliable.</span>
+              </div>
+           </div>
         </div>
       </div>
     </section>
+
   );
 };
 
@@ -380,41 +544,42 @@ export const OurExpertise = () => {
              <Cpu size={18} className="teal" />
              <span className="teal" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800 }}>Intelligence Reservoir</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px', marginBottom: '1.5rem' }}>{t('expertise.title')}</h2>
+          <h2 className="force-white" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, letterSpacing: '-1.5px', marginBottom: '1.5rem' }}>{t('expertise.title')}</h2>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '1.5rem' }}>
           {/* Card 1: Founder Experience */}
-          <div className="reveal" style={{ gridColumn: 'span 7', background: 'linear-gradient(135deg, rgba(11, 31, 51, 0.9), rgba(8, 18, 35, 0.95))', border: '1px solid rgba(31, 78, 95,0.2)', borderRadius: '32px', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
-             <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(31, 78, 95,0.03)', fontWeight: 900, fontSize: '6rem', pointerEvents: 'none' }}><Activity /></div>
+          <div className="reveal" style={{ gridColumn: 'span 7', background: 'linear-gradient(135deg, #0B1F33, #081223)', border: '1px solid rgba(31, 78, 95,0.3)', borderRadius: '32px', padding: '3.5rem', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)', color: 'white' }}>
+             <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', color: 'rgba(31, 78, 95,0.05)', fontWeight: 900, fontSize: '6rem', pointerEvents: 'none' }}><Activity /></div>
              <div style={{ position: 'relative', zIndex: 2 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-                   <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(31, 78, 95,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)', border: '1px solid rgba(31, 78, 95,0.3)' }}><Users size={28} /></div>
-                   <h3 style={{ fontSize: '2rem', fontWeight: 800, color: '#fff', margin: 0 }}>{t('expertise.e1.title')}</h3>
+                   <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(31, 78, 95,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6FB3C8', border: '1px solid rgba(31, 78, 95,0.4)' }}><Users size={28} /></div>
+                   <h3 className="force-white" style={{ fontSize: '2rem', fontWeight: 800, margin: 0 }}>{t('expertise.e1.title')}</h3>
                 </div>
-                <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem' }}>{t('expertise.e1.d1')}</p>
-                <div style={{ padding: '1.8rem', background: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                   <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{t('expertise.e1.d2')}</p>
+                <p className="force-white-dim" style={{ fontSize: '1.2rem', lineHeight: 1.6, marginBottom: '2rem' }}>{t('expertise.e1.d1')}</p>
+                <div style={{ padding: '1.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                   <p className="force-white-dim" style={{ fontSize: '1.05rem', margin: 0, lineHeight: 1.6 }}>{t('expertise.e1.d2')}</p>
                 </div>
                 <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                   <span className="teal" style={{ fontWeight: 800, fontSize: '0.9rem', letterSpacing: '1px' }}>{t('expertise.e1.footer')}</span>
-                   <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, var(--accent-teal), transparent)' }}></div>
+                   <span style={{ fontWeight: 800, fontSize: '0.9rem', color: '#6FB3C8', letterSpacing: '1px' }}>{t('expertise.e1.footer')}</span>
+                   <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, #6FB3C8, transparent)' }}></div>
                 </div>
              </div>
           </div>
 
           {/* Card 2: Collaboration & Talent */}
-          <div className="reveal" style={{ gridColumn: 'span 5', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '32px', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-             <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-teal)' }}><Network size={24} /></div>
-             <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#fff', margin: 0 }}>{t('expertise.e2.title')}</h3>
-             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: 0 }}>{t('expertise.e2.d1')}</p>
+          <div className="reveal" style={{ gridColumn: 'span 5', background: 'rgba(11, 31, 51, 0.8)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '32px', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+             <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6FB3C8' }}><Network size={24} /></div>
+             <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#FFFFFF', margin: 0 }}>{t('expertise.e2.title')}</h3>
+             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, margin: 0 }}>{t('expertise.e2.d1')}</p>
              <div style={{ flex: 1, padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '20px', border: '1px dashed rgba(255,255,255,0.1)' }}>
-                <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>{t('expertise.e2.d2')}</p>
+                <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>{t('expertise.e2.d2')}</p>
              </div>
-             <div style={{ background: 'rgba(31, 78, 95,0.1)', padding: '1.2rem', borderRadius: '100px', textAlign: 'center', border: '1px solid rgba(31, 78, 95,0.2)' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', letterSpacing: '1px' }}>{t('expertise.e2.footer')}</span>
+             <div style={{ background: 'rgba(31, 78, 95, 0.2)', padding: '1.2rem', borderRadius: '100px', textAlign: 'center', border: '1px solid rgba(31, 78, 95, 0.3)' }}>
+                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#6FB3C8', letterSpacing: '1px' }}>{t('expertise.e2.footer')}</span>
              </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -429,41 +594,41 @@ export const ContactSection = () => {
         <div className="contact-split-grid">
           {/* Left Panel: Form */}
           <div className="contact-left-form reveal">
-            <span style={{ color: 'var(--accent-teal)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '1.5rem', display: 'block' }}>Get in Touch</span>
-            <h2>Let's Chat, <span className="teal-text">Reach Out</span> to Us</h2>
+            <span style={{ color: 'var(--accent-teal)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '1.5rem', display: 'block' }}>{t('contact.eyebrow')}</span>
+            <h2>{t('contact.titleLead')} <span className="teal-text">{t('contact.titleAccent')}</span>{t('contact.titleTail')}</h2>
             <p style={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px' }}>
-              Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours.
+              {t('contact.desc')}
             </p>
 
             <form className="traditional-form-premium" onSubmit={(e) => e.preventDefault()}>
               <div className="form-row-2col">
                 <div className="form-group">
-                  <label>First Name</label>
-                  <input type="text" placeholder="Enter your first name" />
+                  <label>{t('contact.form.firstName.label')}</label>
+                  <input type="text" placeholder={t('contact.form.firstName.placeholder')} />
                 </div>
                 <div className="form-group">
-                  <label>Last Name</label>
-                  <input type="text" placeholder="Enter your last name" />
+                  <label>{t('contact.form.lastName.label')}</label>
+                  <input type="text" placeholder={t('contact.form.lastName.placeholder')} />
                 </div>
               </div>
               <div className="form-group">
-                <label>Email Address</label>
-                <input type="email" placeholder="Enter your email address" />
+                <label>{t('contact.form.email.label')}</label>
+                <input type="email" placeholder={t('contact.form.email.placeholder')} />
               </div>
               <div className="form-group">
-                <label>Message</label>
-                <textarea rows="4" placeholder="Write your message here..."></textarea>
+                <label>{t('contact.form.message.label')}</label>
+                <textarea rows="4" placeholder={t('contact.form.message.placeholder')}></textarea>
               </div>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', margin: '0.5rem 0 1.5rem' }}>
                 <input type="checkbox" id="privacy" style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-teal)' }} />
                 <label htmlFor="privacy" style={{ fontSize: '0.9rem', color: '#64748B', cursor: 'pointer' }}>
-                  I agree to our <a href="#" style={{ color: 'var(--accent-teal)', fontWeight: 700, textDecoration: 'underline' }}>privacy policy</a>
+                  {t('contact.form.privacyPrefix')} <a href="#" style={{ color: 'var(--accent-teal)', fontWeight: 700, textDecoration: 'underline' }}>{t('contact.form.privacyLink')}</a>
                 </label>
               </div>
 
               <button type="submit" className="send-msg-btn">
-                Send Message <ArrowRight size={20} />
+                {t('contact.form.submit')} <ArrowRight size={20} />
               </button>
             </form>
           </div>
@@ -471,7 +636,7 @@ export const ContactSection = () => {
           {/* Right Panel: Visuals & Cards */}
           <div className="contact-right-visuals reveal" style={{ transitionDelay: '0.2s' }}>
             <div className="contact-main-img-box">
-              <img src="/images/contact-hero.png" alt="OpFlux Global Communications" />
+              <img src="/images/contact-hero.png" alt={t('contact.imageAlt')} />
             </div>
 
             <div className="contact-info-stack stagger-reveal">
@@ -479,7 +644,7 @@ export const ContactSection = () => {
                 <div className="info-card-left">
                   <div className="info-card-icon"><Mail size={24} /></div>
                   <div className="info-card-text">
-                    <h4>Email Us</h4>
+                    <h4>{t('contact.info.emailTitle')}</h4>
                     <p>opfluxsolution@gmail.com</p>
                   </div>
                 </div>
@@ -490,7 +655,7 @@ export const ContactSection = () => {
                 <div className="info-card-left">
                   <div className="info-card-icon"><Phone size={24} /></div>
                   <div className="info-card-text">
-                    <h4>Call Us</h4>
+                    <h4>{t('contact.info.callTitle')}</h4>
                     <p>+1 (555) 832-4923</p>
                   </div>
                 </div>
@@ -501,11 +666,11 @@ export const ContactSection = () => {
                 <div className="meeting-card-left">
                   <div className="info-card-icon" style={{ background: 'rgba(58, 124, 140, 0.05)', color: '#3A7C8C' }}><Calendar size={24} /></div>
                   <div className="meeting-card-text">
-                    <h4>Prefer a Meeting?</h4>
-                    <p>Schedule a free consultation with our experts</p>
+                    <h4>{t('contact.info.meetingTitle')}</h4>
+                    <p>{t('contact.info.meetingDesc')}</p>
                   </div>
                 </div>
-                <a href="#" className="book-meeting-btn">Book a Meeting</a>
+                <a href="#" className="book-meeting-btn">{t('contact.info.meetingCta')}</a>
               </div>
             </div>
           </div>
@@ -516,29 +681,29 @@ export const ContactSection = () => {
           <div className="trust-item">
             <div className="trust-icon"><ShieldCheck size={24} /></div>
             <div className="trust-info">
-              <h5>Secure & Confidential</h5>
-              <p>Your information is safe with us. We never share your data.</p>
+              <h5>{t('contact.trust.secureTitle')}</h5>
+              <p>{t('contact.trust.secureDesc')}</p>
             </div>
           </div>
           <div className="trust-item">
             <div className="trust-icon"><Timer size={24} /></div>
             <div className="trust-info">
-              <h5>Quick Response</h5>
-              <p>We respond to all inquiries within 24 business hours.</p>
+              <h5>{t('contact.trust.responseTitle')}</h5>
+              <p>{t('contact.trust.responseDesc')}</p>
             </div>
           </div>
           <div className="trust-item">
             <div className="trust-icon"><Activity size={24} /></div>
             <div className="trust-info">
-              <h5>Expert Support</h5>
-              <p>Our team is here to help you find the right solution.</p>
+              <h5>{t('contact.trust.supportTitle')}</h5>
+              <p>{t('contact.trust.supportDesc')}</p>
             </div>
           </div>
           <div className="trust-item">
             <div className="trust-icon"><Globe size={24} /></div>
             <div className="trust-info">
-              <h5>Global Presence</h5>
-              <p>Serving automated retail operators worldwide.</p>
+              <h5>{t('contact.trust.globalTitle')}</h5>
+              <p>{t('contact.trust.globalDesc')}</p>
             </div>
           </div>
         </div>
@@ -559,43 +724,43 @@ export const AboutSection = () => {
         {/* HERO SECTION - ANTIGRAVITY EDITION */}
         <div className="about-premium-hero">
           <div className="hero-content-left reveal">
-            <span className="ops-eyebrow" style={{ color: 'var(--accent-teal)', letterSpacing: '4px' }}>OUR STORY</span>
+            <span className="ops-eyebrow" style={{ color: 'var(--accent-teal)', letterSpacing: '4px' }}>{t('about.hero.eyebrow')}</span>
             <h1 className="premium-title">
-              Intelligence <span className="accent">Operated.</span><br/>
-              Reliability <span className="accent">Delivered.</span>
+              {t('about.hero.title1')} <span className="accent">{t('about.hero.title1Accent')}</span><br/>
+              {t('about.hero.title2')} <span className="accent">{t('about.hero.title2Accent')}</span>
             </h1>
             <p className="premium-desc-p">
-              OpFlux Solution isn't just a consulting firm; we are the operational heartbeat for automated retail systems. We translate complex engineering into consistent real-world performance.
+              {t('about.hero.desc')}
             </p>
             
             <div className="premium-badge-v2 reveal">
               <div className="badge-v2-icon"><ShieldCheck size={32} /></div>
               <div className="badge-v2-text">
-                The bridge between high-tech vision —<br/>
-                <b>and hands-on execution.</b>
+                {t('about.hero.badgeLine1')}<br/>
+                <b>{t('about.hero.badgeLine2')}</b>
               </div>
             </div>
           </div>
 
           <div className="premium-hero-visual reveal">
             <div className="premium-img-container">
-              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop" alt="OpFlux Robotic Automation" />
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop" alt={t('about.hero.imageAlt')} />
             </div>
             
             {/* Floating Intelligence Nodes */}
             <div className="floating-node-card node-1 reveal">
               <div className="point-icon-box" style={{ marginBottom: 0 }}><Activity size={20} /></div>
               <div className="node-text">
-                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>99.2% Uptime</p>
-                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>Operational Precision</p>
+                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>{t('about.hero.node1.value')}</p>
+                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>{t('about.hero.node1.label')}</p>
               </div>
             </div>
             
             <div className="floating-node-card node-2 reveal">
               <div className="point-icon-box" style={{ marginBottom: 0 }}><TrendingUp size={20} /></div>
               <div className="node-text">
-                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>Scale Ready</p>
-                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>Multi-site growth</p>
+                <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>{t('about.hero.node2.value')}</p>
+                <p style={{ margin: 0, fontSize: '0.7rem', color: '#64748B' }}>{t('about.hero.node2.label')}</p>
               </div>
             </div>
           </div>
@@ -606,7 +771,7 @@ export const AboutSection = () => {
           <div className="ops-wall-grid">
             <div className="wall-visual-tilt reveal">
               <div className="tilt-inner">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="OpFlux Office" />
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt={t('about.wall.imageAlt')} />
                 <div className="wall-overlay-logo">
                   <h2 className="wall-logo-text">OpFlux</h2>
                 </div>
@@ -617,29 +782,29 @@ export const AboutSection = () => {
               <div className="premium-point-item reveal">
                 <div className="point-icon-box"><Settings size={24} /></div>
                 <div className="point-info-text">
-                  <h4>Operations Management</h4>
-                  <p>Managing day-to-day performance and system execution across all kiosque locations.</p>
+                  <h4>{t('about.wall.ops.title')}</h4>
+                  <p>{t('about.wall.ops.desc')}</p>
                 </div>
               </div>
               <div className="premium-point-item reveal">
                 <div className="point-icon-box"><Truck size={24} /></div>
                 <div className="point-info-text">
-                  <h4>Logistics & Supply Chain</h4>
-                  <p>Intelligent inventory planning, demand forecasting, and seamless multi-site coordination.</p>
+                  <h4>{t('about.wall.logistics.title')}</h4>
+                  <p>{t('about.wall.logistics.desc')}</p>
                 </div>
               </div>
               <div className="premium-point-item reveal">
                 <div className="point-icon-box"><ShieldCheck size={24} /></div>
                 <div className="point-info-text">
-                  <h4>Technical Reliability</h4>
-                  <p>Proactive maintenance, real-time monitoring, and rapid issue resolution.</p>
+                  <h4>{t('about.wall.reliability.title')}</h4>
+                  <p>{t('about.wall.reliability.desc')}</p>
                 </div>
               </div>
               <div className="premium-point-item reveal">
                 <div className="point-icon-box"><TrendingUp size={24} /></div>
                 <div className="point-info-text">
-                  <h4>Scalable Growth Support</h4>
-                  <p>Data-driven consulting, performance optimization, and business growth enablement.</p>
+                  <h4>{t('about.wall.growth.title')}</h4>
+                  <p>{t('about.wall.growth.desc')}</p>
                 </div>
               </div>
             </div>
@@ -650,23 +815,23 @@ export const AboutSection = () => {
         <div className="premium-metrics-strip stagger-reveal">
           <div className="metric-v4 reveal">
             <div className="metric-v4-val"><CountUp end={99.2} suffix="%" /></div>
-            <div className="metric-v4-label">System Uptime</div>
-            <div className="metric-v4-desc">Consistent performance across all locations.</div>
+            <div className="metric-v4-label">{t('about.metrics.uptime.label')}</div>
+            <div className="metric-v4-desc">{t('about.metrics.uptime.desc')}</div>
           </div>
           <div className="metric-v4 reveal">
-            <div className="metric-v4-val">24/7</div>
-            <div className="metric-v4-label">Real-Time Support</div>
-            <div className="metric-v4-desc">Monitoring and support that never stops.</div>
+            <div className="metric-v4-val">{t('about.metrics.support.value')}</div>
+            <div className="metric-v4-label">{t('about.metrics.support.label')}</div>
+            <div className="metric-v4-desc">{t('about.metrics.support.desc')}</div>
           </div>
           <div className="metric-v4 reveal">
-             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>Multi-Site</div>
-             <div className="metric-v4-label">Multi-Site Ready</div>
-             <div className="metric-v4-desc">Built to operate and scale across multiple locations.</div>
+             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>{t('about.metrics.multiSite.value')}</div>
+             <div className="metric-v4-label">{t('about.metrics.multiSite.label')}</div>
+             <div className="metric-v4-desc">{t('about.metrics.multiSite.desc')}</div>
           </div>
           <div className="metric-v4 reveal">
-             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>France</div>
-             <div className="metric-v4-label">France Based</div>
-             <div className="metric-v4-desc">Headquartered in Île-de-France, serving across the region.</div>
+             <div className="metric-v4-val" style={{ fontSize: '2.5rem', marginTop: '1rem' }}>{t('about.metrics.france.value')}</div>
+             <div className="metric-v4-label">{t('about.metrics.france.label')}</div>
+             <div className="metric-v4-desc">{t('about.metrics.france.desc')}</div>
           </div>
         </div>
 
@@ -676,13 +841,11 @@ export const AboutSection = () => {
           <div className="quote-content-v4">
             <div className="quote-icon-v4"><MessageSquare size={80} /></div>
             <div className="quote-main-v4">
-              <h3>Our Philosophy</h3>
-              <h2>We run complete<br/>operational systems.</h2>
+              <h3>{t('about.quote.title')}</h3>
+              <h2>{t('about.quote.headline1')}<br/>{t('about.quote.headline2')}</h2>
             </div>
             <div className="quote-side-v4">
-              <p>
-                Every decision, every process, and every system is aligned to one goal — reliable operations that drive performance and long-term value.
-              </p>
+              <p>{t('about.quote.desc')}</p>
             </div>
           </div>
         </div>
@@ -699,45 +862,45 @@ export const WhatWeDo = () => {
     {
       id: "01",
       icon: <Activity size={24} />,
-      title: "Operations Management",
-      desc: "Managing day-to-day performance and system execution across all kiosque locations.",
+      title: t('servicesPage.cards.s1.title'),
+      desc: t('servicesPage.cards.s1.desc'),
       img: "/images/service-ops.png"
     },
     {
       id: "02",
       icon: <Truck size={24} />,
-      title: "Logistics & Supply Chain Control",
-      desc: "Ensuring efficient inventory flow, demand-based planning, and multi-site coordination.",
+      title: t('servicesPage.cards.s2.title'),
+      desc: t('servicesPage.cards.s2.desc'),
       img: "/images/service-logistics.png"
     },
     {
       id: "03",
       icon: <ShieldCheck size={24} />,
-      title: "Technical Operations & Maintenance",
-      desc: "Maintaining system reliability through monitoring, diagnostics, and proactive support.",
+      title: t('servicesPage.cards.s3.title'),
+      desc: t('servicesPage.cards.s3.desc'),
       img: "/images/service-tech.png"
     },
     {
       id: "04",
       icon: <Users size={24} />,
-      title: "Business & Management Consulting",
-      desc: "Enhancing performance through marketing insights, CRM optimization, and site analysis.",
+      title: t('servicesPage.cards.s4.title'),
+      desc: t('servicesPage.cards.s4.desc'),
       img: "/images/service-consulting.png"
     }
   ];
 
   const metrics = [
-    { id: 1, icon: <Timer size={28} />, val: "99.2", suffix: "%", label: "System Uptime" },
-    { id: 2, icon: <Coffee size={28} />, val: "24/7", suffix: "", label: "Real-Time Support" },
-    { id: 3, icon: <TrendingUp size={28} />, val: "41", suffix: "%", label: "Average ROI Increase" },
-    { id: 4, icon: <MapPin size={28} />, val: "100", suffix: "+", label: "Active Locations" }
+    { id: 1, icon: <Timer size={28} />, val: "99.2", suffix: "%", label: t('servicesPage.metrics.m1.label') },
+    { id: 2, icon: <Coffee size={28} />, val: "24/7", suffix: "", label: t('servicesPage.metrics.m2.label') },
+    { id: 3, icon: <TrendingUp size={28} />, val: "41", suffix: "%", label: t('servicesPage.metrics.m3.label') },
+    { id: 4, icon: <MapPin size={28} />, val: "100", suffix: "+", label: t('servicesPage.metrics.m4.label') }
   ];
 
   const gains = [
-    { icon: <Activity size={24} />, title: "Lower Downtime", desc: "Proactive monitoring and predictive maintenance minimize disruptions." },
-    { icon: <Package size={24} />, title: "Inventory Accuracy", desc: "Smart forecasting and inventory control ensure the right stock, at the right time." },
-    { icon: <Network size={24} />, title: "Multi-Site Control", desc: "Centralized systems and real-time visibility across all your kiosque locations." },
-    { icon: <TrendingUp size={24} />, title: "Scalable Growth", desc: "Operational systems designed to scale with your business without complexity." }
+    { icon: <Activity size={24} />, title: t('servicesPage.gains.g1.title'), desc: t('servicesPage.gains.g1.desc') },
+    { icon: <Package size={24} />, title: t('servicesPage.gains.g2.title'), desc: t('servicesPage.gains.g2.desc') },
+    { icon: <Network size={24} />, title: t('servicesPage.gains.g3.title'), desc: t('servicesPage.gains.g3.desc') },
+    { icon: <TrendingUp size={24} />, title: t('servicesPage.gains.g4.title'), desc: t('servicesPage.gains.g4.desc') }
   ];
 
   return (
@@ -746,33 +909,31 @@ export const WhatWeDo = () => {
         {/* Intro Section */}
         <div className="services-hero-grid">
           <div className="services-intro-left reveal">
-            <span className="ops-eyebrow">SERVICES</span>
-            <h1>What <span className="teal-text">We Do</span></h1>
-            <p className="intro-desc">Operational intelligence, logistics precision, and scalable execution.</p>
-            <p className="intro-sub">
-              OpFlux Solution manages and optimizes automated retail operations through structured systems, intelligent logistics, and real-world execution.
-            </p>
+            <span className="ops-eyebrow">{t('servicesPage.eyebrow')}</span>
+            <h1>{t('servicesPage.titleLead')} <span className="teal-text">{t('servicesPage.titleAccent')}</span></h1>
+            <p className="intro-desc">{t('servicesPage.introDesc')}</p>
+            <p className="intro-sub">{t('servicesPage.introSub')}</p>
             <a href="#" className="ops-cta-link shimmer-hover">
-              Explore Our Services <ArrowRight size={18} />
+              {t('servicesPage.cta')} <ArrowRight size={18} />
             </a>
           </div>
 
           <div className="services-stack-right reveal">
             <div className="service-stack-card">
               <div className="stack-icon-box"><Activity size={20} /></div>
-              <span className="stack-card-text">Operations Management</span>
+              <span className="stack-card-text">{t('servicesPage.stack.s1')}</span>
             </div>
             <div className="service-stack-card">
               <div className="stack-icon-box"><Truck size={20} /></div>
-              <span className="stack-card-text">Logistics & Supply Chain</span>
+              <span className="stack-card-text">{t('servicesPage.stack.s2')}</span>
             </div>
             <div className="service-stack-card">
               <div className="stack-icon-box"><Wrench size={20} /></div>
-              <span className="stack-card-text">Technical Maintenance</span>
+              <span className="stack-card-text">{t('servicesPage.stack.s3')}</span>
             </div>
             <div className="service-stack-card">
               <div className="stack-icon-box"><Users size={20} /></div>
-              <span className="stack-card-text">Business Consulting</span>
+              <span className="stack-card-text">{t('servicesPage.stack.s4')}</span>
             </div>
           </div>
         </div>
@@ -789,7 +950,7 @@ export const WhatWeDo = () => {
                   </div>
                   <h3>{srv.title}</h3>
                   <p>{srv.desc}</p>
-                  <a href="#" className="learn-more-link">Learn More <ArrowRight size={16} /></a>
+                  <a href="#" className="learn-more-link">{t('servicesPage.learnMore')} <ArrowRight size={16} /></a>
                 </div>
                 <div className="service-card-visual">
                   <img src={srv.img} alt={srv.title} />
@@ -830,17 +991,15 @@ export const WhatWeDo = () => {
             <div className="quote-circle"><MessageSquare size={32} /></div>
             <div className="phil-text">
               <h2>
-                We don't manage isolated processes. 
-                <span className="teal-text">We run complete operational systems.</span>
+                {t('servicesPage.philosophyLine1')} 
+                <span className="teal-text">{t('servicesPage.philosophyLine2')}</span>
               </h2>
             </div>
           </div>
           <div className="phil-visual-right">
-            <p>
-              Every service is connected into one intelligent operating model built for scale, consistency, and control.
-            </p>
+            <p>{t('servicesPage.philosophyDesc')}</p>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <a href="#" className="learn-more-link" style={{ margin: 0 }}>Discover How We Operate <ArrowRight size={16} /></a>
+              <a href="#" className="learn-more-link" style={{ margin: 0 }}>{t('servicesPage.philosophyCta')} <ArrowRight size={16} /></a>
               
               {/* CSS Isometric Animation */}
               <div className="isometric-graphic">
@@ -923,13 +1082,11 @@ export const HowOpflux = () => {
         <div className="container">
           <div className="ops-hero-grid">
             <div className="ops-hero-content stagger-reveal">
-              <span className="ops-eyebrow">Operations Management</span>
-              <h1 className="ops-hero-title">How OpFlux <span className="gradient-text">Operates</span></h1>
-              <p className="ops-hero-subtitle">
-                A seamless orchestration of intelligence, logistics, and technology to power every automated retail experience.
-              </p>
+              <span className="ops-eyebrow">{t('opsPage.eyebrow')}</span>
+              <h1 className="ops-hero-title">{t('opsPage.titleLead')} <span className="gradient-text">{t('opsPage.titleAccent')}</span></h1>
+              <p className="ops-hero-subtitle">{t('opsPage.subtitle')}</p>
               <a href="#workflow" className="ops-cta-link shimmer-hover">
-                See how it works <span className="ops-cta-icon"><Play size={14} fill="currentColor" /></span>
+                {t('opsPage.cta')} <span className="ops-cta-icon"><Play size={14} fill="currentColor" /></span>
               </a>
             </div>
             <div className="ops-ecosystem floating-nodes">
@@ -938,28 +1095,28 @@ export const HowOpflux = () => {
                 <span style={{ fontWeight: 900, fontSize: '1.4rem', color: 'var(--text-primary)', fontFamily: 'Outfit' }}>OpFlux</span>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '0s' }}>
-                <div className="node-label left">01<br/>Forecast</div>
+                <div className="node-label left">01<br/>{t('opsPage.nodes.forecast')}</div>
                 <div className="node-icon-box"><BarChart3 size={20} /></div>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '1.5s' }}>
-                <div className="node-label left">02<br/>Plan</div>
+                <div className="node-label left">02<br/>{t('opsPage.nodes.plan')}</div>
                 <div className="node-icon-box"><Package size={20} /></div>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '3s' }}>
-                <div className="node-label left">03<br/>Coordinate</div>
+                <div className="node-label left">03<br/>{t('opsPage.nodes.coordinate')}</div>
                 <div className="node-icon-box"><Truck size={20} /></div>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '4.5s' }}>
                 <div className="node-icon-box"><Activity size={20} /></div>
-                <div className="node-label right">04<br/>Monitor</div>
+                <div className="node-label right">04<br/>{t('opsPage.nodes.monitor')}</div>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '6s' }}>
                 <div className="node-icon-box"><Wrench size={20} /></div>
-                <div className="node-label right">05<br/>Maintain</div>
+                <div className="node-label right">05<br/>{t('opsPage.nodes.maintain')}</div>
               </div>
               <div className="ops-eco-node node-float" style={{ '--delay': '7.5s' }}>
                 <div className="node-icon-box"><Settings size={20} /></div>
-                <div className="node-label right">06<br/>Optimize</div>
+                <div className="node-label right">06<br/>{t('opsPage.nodes.optimize')}</div>
               </div>
             </div>
           </div>
@@ -974,12 +1131,12 @@ export const HowOpflux = () => {
           </div>
           <div className="ops-cards-grid">
             {[
-              { id: '01', title: 'Demand Forecasting', desc: 'Predicting consumer patterns to optimize machine placement and stocking frequency.', icon: <BarChart3 /> },
-              { id: '02', title: 'Inventory Planning', desc: 'Managing the life cycle of consumables to ensure zero stock-outs.', icon: <Package /> },
-              { id: '03', title: 'Logistics Coordination', desc: 'Streamlining the movement of goods from warehouse to kiosque.', icon: <Truck /> },
-              { id: '04', title: 'Real-Time Monitoring', desc: 'Cloud-based oversight of technical health and sales performance.', icon: <Activity /> },
-              { id: '05', title: 'Predictive Maintenance', desc: 'Engineers deployed before a failure occurs, based on system health data.', icon: <Wrench /> },
-              { id: '06', title: 'Continuous Optimization', desc: 'Analytic-driven refinement of every operational touchpoint.', icon: <Settings /> }
+              { id: '01', title: t('ops.o1.title'), desc: t('ops.o1.desc'), icon: <BarChart3 /> },
+              { id: '02', title: t('ops.o2.title'), desc: t('ops.o2.desc'), icon: <Package /> },
+              { id: '03', title: t('ops.o3.title'), desc: t('ops.o3.desc'), icon: <Truck /> },
+              { id: '04', title: t('ops.o4.title'), desc: t('ops.o4.desc'), icon: <Activity /> },
+              { id: '05', title: t('ops.o5.title'), desc: t('ops.o5.desc'), icon: <Wrench /> },
+              { id: '06', title: t('ops.o6.title'), desc: t('ops.o6.desc'), icon: <Settings /> }
             ].map((card, idx) => (
               <div key={card.id} className="ops-card reveal" style={{ transitionDelay: `${idx * 0.1}s` }}>
                 <div className="ops-card-header">
@@ -1002,22 +1159,22 @@ export const HowOpflux = () => {
             <div className="ops-metric-item">
               <div className="ops-metric-icon"><Timer size={24} /></div>
               <div className="ops-metric-val"><CountUp end={99.2} suffix="%" /></div>
-              <div className="ops-metric-label">System Uptime</div>
+              <div className="ops-metric-label">{t('opsPage.metrics.uptime')}</div>
             </div>
             <div className="ops-metric-item">
               <div className="ops-metric-icon"><TrendingUp size={24} /></div>
               <div className="ops-metric-val"><CountUp end={32} suffix="%" /></div>
-              <div className="ops-metric-label">Reduction in Downtime</div>
+              <div className="ops-metric-label">{t('opsPage.metrics.downtime')}</div>
             </div>
             <div className="ops-metric-item">
               <div className="ops-metric-icon"><Activity size={24} /></div>
               <div className="ops-metric-val"><CountUp end={41} suffix="%" /></div>
-              <div className="ops-metric-label">Increase in Asset ROI</div>
+              <div className="ops-metric-label">{t('opsPage.metrics.roi')}</div>
             </div>
             <div className="ops-metric-item">
               <div className="ops-metric-icon"><ShieldCheck size={24} /></div>
               <div className="ops-metric-val"><CountUp end="24/7" /></div>
-              <div className="ops-metric-label">Real-Time Monitoring</div>
+              <div className="ops-metric-label">{t('opsPage.metrics.monitoring')}</div>
             </div>
           </div>
         </div>
@@ -1029,13 +1186,13 @@ export const HowOpflux = () => {
           <div className="ops-philosophy-split">
             <div className="ops-phil-left reveal">
               <div className="ops-phil-quote-icon"><MessageSquare size={48} /></div>
-              <div style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', marginBottom: '1.5rem' }}>Operational Philosophy</div>
-              <div className="ops-phil-quote">"Operations is not a cost center; it’s a value engine."</div>
+              <div style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent-teal)', marginBottom: '1.5rem' }}>{t('philosophy.title')}</div>
+              <div className="ops-phil-quote">{t('philosophy.quote')}</div>
             </div>
             <div className="ops-phil-right reveal" style={{ transitionDelay: '0.2s' }}>
-              <p>We believe automation is only as strong as its weakest link — usually the friction between digital and physical systems.</p>
-              <p>We apply Lean Engineering and Integrated Logistics to eliminate that friction.</p>
-              <p>We manage the quiet machinery that makes the loud machinery work.</p>
+              <p>{t('philosophy.d1')}</p>
+              <p>{t('philosophy.d2')}</p>
+              <p>{t('philosophy.footer')}</p>
               <div className="ops-phil-cube-container">
                 <div className="ops-phil-cube-platform"></div>
                 <div className="ops-phil-cube floating-cube shimmer-glow"></div>
@@ -1117,18 +1274,18 @@ export const Logistics = () => {
         {/* Top Hero Section */}
         <div className="logistics-hero-grid">
           <div className="logistics-content reveal">
-            <span className="ops-eyebrow">Logistics</span>
+            <span className="ops-eyebrow">{t('supply.subtitle')}</span>
             <h1>
-              <span>Consumables</span>
-              <span className="gradient-text">Supply Chain</span>
+              <span>{t('supply.titleLine1')}</span>
+              <span className="gradient-text">{t('supply.titleLine2')}</span>
             </h1>
             <p className="logistics-subtext">
-              Managing coffee, food, or retail consumables is a high-stakes logistics game. If the machine is empty, the business is closed.
+              {t('supply.desc1')}{t('supply.desc2')}
             </p>
           </div>
 
           <div className="logistics-illustration reveal" style={{ transitionDelay: '0.2s' }}>
-            <img src="/images/logistics-hero.png" alt="OpFlux Warehouse and Truck" className="logistics-hero-img" />
+            <img src="/images/logistics-hero.png" alt={t('supply.heroAlt')} className="logistics-hero-img" />
             <div className="map-pin" style={{ top: '15%', left: '30%', '--delay': '0s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
             <div className="map-pin" style={{ bottom: '25%', right: '15%', '--delay': '1s' }}><MapPin size={32} fill="var(--accent-teal)" /></div>
             <svg className="logistic-paths" width="100%" height="100%" style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
@@ -1141,22 +1298,22 @@ export const Logistics = () => {
             <div className="logistics-pill reveal">
               <div className="logistics-pill-icon"><Box size={24} /></div>
               <div className="logistics-pill-info">
-                <h4>Zero</h4>
-                <span>Stock-outs</span>
+                <h4>{t('supply.pill1.value')}</h4>
+                <span>{t('supply.pill1.label')}</span>
               </div>
             </div>
             <div className="logistics-pill reveal" style={{ transitionDelay: '0.1s' }}>
               <div className="logistics-pill-icon"><Timer size={24} /></div>
               <div className="logistics-pill-info">
                 <h4>99.2%</h4>
-                <span>On-time Delivery</span>
+                <span>{t('supply.pill2.label')}</span>
               </div>
             </div>
             <div className="logistics-pill reveal" style={{ transitionDelay: '0.2s' }}>
               <div className="logistics-pill-icon"><TrendingUp size={24} /></div>
               <div className="logistics-pill-info">
                 <h4>100%</h4>
-                <span>Inventory Visibility</span>
+                <span>{t('supply.pill3.label')}</span>
               </div>
             </div>
           </div>
@@ -1185,32 +1342,32 @@ export const Logistics = () => {
 
           <div className="management-header">
             <div className="m-head-left">
-              <h4 style={{ color: 'var(--accent-teal)', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', fontWeight: 800, marginBottom: '1rem' }}>What We Manage</h4>
-              <h2>End-to-End Orchestration</h2>
+              <h4 style={{ color: 'var(--accent-teal)', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', fontWeight: 800, marginBottom: '1rem' }}>{t('supply.s1.title')}</h4>
+              <h2>{t('supply.orchestrationTitle')}</h2>
             </div>
-            <p>Procurement, warehousing, and "Last-Foot" delivery to the kiosque.</p>
+            <p>{t('supply.s1.desc')}</p>
           </div>
 
           <div className="management-features stagger-reveal">
             <div className="feature-col">
               <div className="feature-icon"><Box size={28} /></div>
-              <h4>Procurement</h4>
-              <p>Sourcing high-quality consumables from trusted suppliers.</p>
+              <h4>{t('supply.features.procurement.title')}</h4>
+              <p>{t('supply.features.procurement.desc')}</p>
             </div>
             <div className="feature-col">
               <div className="feature-icon"><LayoutGrid size={28} /></div>
-              <h4>Warehousing</h4>
-              <p>Smart inventory storage with temperature and batch control.</p>
+              <h4>{t('supply.features.warehousing.title')}</h4>
+              <p>{t('supply.features.warehousing.desc')}</p>
             </div>
             <div className="feature-col">
               <div className="feature-icon"><Truck size={28} /></div>
-              <h4>Last-Foot Delivery</h4>
-              <p>Route-optimized delivery to kiosques at the right time.</p>
+              <h4>{t('supply.features.lastFoot.title')}</h4>
+              <p>{t('supply.features.lastFoot.desc')}</p>
             </div>
             <div className="feature-col">
               <div className="feature-icon"><Globe size={28} /></div>
-              <h4>Inventory Visibility</h4>
-              <p>Real-time tracking of stock levels across all locations and machines.</p>
+              <h4>{t('supply.features.visibility.title')}</h4>
+              <p>{t('supply.features.visibility.desc')}</p>
             </div>
           </div>
         </div>
